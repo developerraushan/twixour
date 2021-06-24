@@ -9,7 +9,7 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState();
-    const signUp = (email, password) => {
+    const signup = (email, password) => {
         return auth.createUserWithEmailAndPassword(email,password)
     }
 

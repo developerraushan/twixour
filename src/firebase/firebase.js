@@ -14,12 +14,13 @@ var firebaseConfig = {
   // Initialize Firebase
 function initFirebase() {
   if(!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
+    return firebase.initializeApp(firebaseConfig);
   }
 }
-initFirebase();
+
+const app = initFirebase();
 // const fireDb = firebase.initializeApp(firebaseConfig);
 // fireDb.database().ref()
 
 export const auth = app.auth();
-export default firebase;
+export default app;
