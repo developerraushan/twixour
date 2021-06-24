@@ -3,6 +3,7 @@ import Signup from './Signup';
 import { Container } from 'react-bootstrap';
 import { AuthProvider } from '../context/AuthContext';
 
+
 const App = () => {
   return (
     <AuthProvider>
