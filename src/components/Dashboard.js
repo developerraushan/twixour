@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Card, Button, Alert } from 'react-bootstrap';
 import { useAuth } from '../context/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
+import Header from './Header';
 
 const Dashboard = () => {
     const history = useHistory();
@@ -16,8 +17,10 @@ const Dashboard = () => {
         }
     }
     const { currentUser, logout } = useAuth();
+    console.log("from dashboard", currentUser)
     return (
         <>
+        
         <Card>
             <Card.Body>
                 <h2 className = "text-center mb-4">Profile</h2>

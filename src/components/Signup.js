@@ -3,7 +3,9 @@ import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../context/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 
+
 const Signup = () => {
+    
     const history = useHistory();
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -21,7 +23,8 @@ const Signup = () => {
             setError('');
             setLoading(true)
             await signup(emailRef.current.value, passwordRef.current.value);
-            history.push("/");
+            
+            history.push("/create-profile");
         } catch {
             setError('Failed to create an account')
         }

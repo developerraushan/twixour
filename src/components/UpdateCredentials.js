@@ -3,7 +3,7 @@ import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../context/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 
-const UpdateProfile = () => {
+const UpdateCredentials = () => {
     const history = useHistory();
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -68,4 +68,4 @@ const UpdateProfile = () => {
     )
 }
 
-export default UpdateProfile;
+export default UpdateCredentials;
