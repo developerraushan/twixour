@@ -44,6 +44,11 @@ const Header = () => {
                             </Link>
                                 
                             </li>
+                        <li className = "nav-item">
+                            <Link to = "/courses" style = {{ textDecoration: 'none'}}>
+                                <span className = "nav-link">Courses</span>
+                            </Link>
+                        </li>
                         </>
                     }
                     </ul>

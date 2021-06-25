@@ -4,14 +4,18 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 
 import PrivateRoute from './PrivateRoute';
-import ForgotPassword from './ForgotPassword';
-import UpdateCredentials from './UpdateCredentials';
-import UpdateProfile from './UpdateProfile';
+import ForgotPassword from './authRelated/ForgotPassword';
+import UpdateCredentials from './authRelated/UpdateCredentials';
+import UpdateProfile from './authRelated/UpdateProfile';
 import Header from './Header';
-import Signup from './Signup';
+import Signup from './authRelated/Signup';
 import Dashboard from './Dashboard';
-import Login from './Login';
+import Login from './authRelated/Login';
 import Profile from './Profile';
+import Courses from './courses/Courses';
+import AddCourse from './courses/AddCourse';
+import DetailCourse from './courses/DetailCourse';
+import AddStudents from './courses/AddStudents';
 
 const App = () => {
   return (
@@ -26,6 +30,10 @@ const App = () => {
           <Route path = "/forgot-password" component = {ForgotPassword} />
           <PrivateRoute path = "/update-profile" component = {UpdateProfile} />
           <PrivateRoute path = "/profile" component = {Profile} />
+          <PrivateRoute path = "/courses" component = {Courses} />
+          <PrivateRoute path = "/add-course" component = {AddCourse} />
+          <PrivateRoute path = "/course-detail" component = {DetailCourse} />
+          <PrivateRoute path = "/course/add-students" component = {AddStudents} />
       </Switch>
     </Router>
     </AuthProvider>

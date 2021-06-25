@@ -1,0 +1,7 @@
+{
+    "name": "twixour",
+    "integrations": {
+      "capacitor": {}
+    },
+    "type": "react"
+  }

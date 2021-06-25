@@ -1,0 +1,8 @@
+{
+    "appId": "io.ionic.twixour",
+    "appName": "twixour",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "build",
+    "cordova": {}
+  }
