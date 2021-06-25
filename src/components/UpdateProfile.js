@@ -3,6 +3,9 @@ import { database } from '../firebase/firebase';
 import { useAuth } from '../context/AuthContext';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Progress from '../helper_component/Progress';
+import Expire from '../helper_component/Expire';
+import MakeVisible from '../helper_component/MakeVisible';
 
 const UpdateProfile = () => {
     const [profileObjects, setProfileObjects] = useState('');
@@ -33,7 +36,7 @@ const UpdateProfile = () => {
                 setProfileObjects({
                     ...snapshot.val()
                 })
-            }
+            } 
         })
     },[])
     
@@ -64,7 +67,10 @@ const UpdateProfile = () => {
     }
     return (
         <> 
-           
+             {!profileObjects ? 
+           <> Loading... <Progress completed = {0} bgColor = "#6a1b9a"  /> </> : <Expire delay = "1000">  <Progress completed = {100} bgColor = "#6a1b9a" />  </Expire>      }
+           {profileObjects &&
+           <MakeVisible delay="1500">
                 <div className="card">
                     <div className="card-body">
                     <Link to = "/update-credentials" className = "btn btn-primary w-100 mt-2">Update Credential</Link>
@@ -73,63 +79,63 @@ const UpdateProfile = () => {
                         <form onSubmit = {profileCreator}>
                             <div className = "mb-3" id = "first_name">
                                 <label className = "form-label">First Name </label>
-                                <input className="form-control"  type = "text" ref = {firstNameRef} required placeholder = {profileObjects && profileObjects.first_name} />
+                                <input className="form-control"  type = "text" ref = {firstNameRef} required defaultValue = {profileObjects && profileObjects.first_name}  />
                             </div>
 
                             <div className = "mb-3" id = "last_name">
                                 <label className = "form-label">Last Name </label>
-                                <input className="form-control" type = "text" ref = {lastNameRef} required placeholder = {profileObjects && profileObjects.last_name}  />
+                                <input className="form-control" type = "text" ref = {lastNameRef} required defaultValue = {profileObjects && profileObjects.last_name}  />
                             </div>
 
                             <div className = "mb-3" id = "profile-photo">
                                 <label className = "form-label">Profile Photo</label>
-                                <input className="form-control"  type = "text" ref = {photoURLRef} required placeholder = {profileObjects && profileObjects.photoURL}/>
+                                <input className="form-control"  type = "text" ref = {photoURLRef} required defaultValue = {profileObjects && profileObjects.photoURL}/>
                             </div>
 
                             <div className = "mb-3" id = "gender">
                                 <label className = "form-label"> Gender </label>
-                                <select className = "form-select" ref = {genderRef} required placeholder = {profileObjects && profileObjects.gender}>
-                                    <option value = "">Male</option>
+                                <select className = "form-select" ref = {genderRef} required defaultValue = {profileObjects && profileObjects.gender}>
+                                    <option value = "Male">Male</option>
                                     <option value = "Female">Female</option>
                                 </select>
                             </div>
 
                             <div className = "mb-3" id = "phone">
                                 <label className = "form-label"> Phone </label>
-                                <input className="form-control"  type = "text" ref = {phoneRef} required placeholder = {profileObjects && profileObjects.phone} />
+                                <input className="form-control"  type = "text" ref = {phoneRef} required defaultValue = {profileObjects && profileObjects.phone} />
                             </div>
 
                             <div className = "mb-3" id = "address">
                                 <label className = "form-label"> Address </label>
-                                <input className="form-control"  type = "text" ref = {addressRef} required placeholder = {profileObjects && profileObjects.address}/>
+                                <input className="form-control"  type = "text" ref = {addressRef} required defaultValue = {profileObjects && profileObjects.address}/>
                             </div>
 
                             <div className = "mb-3" id = "city">
                                 <label className = "form-label"> City </label>
-                                <input className="form-control"  type = "text" ref = {cityRef} required placeholder = "City" placeholder = {profileObjects && profileObjects.city} />
+                                <input className="form-control"  type = "text" ref = {cityRef} required defaultValue = "City" placeholder = {profileObjects && profileObjects.city} />
                             </div>
 
                             <div className = "mb-3" id = "pincode">
                                 <label className = "form-label"> Pincode </label>
-                                <input className="form-control"  type = "text" ref = {pincodeRef} required placeholder = {profileObjects && profileObjects.pincode} />
+                                <input className="form-control"  type = "text" ref = {pincodeRef} required defaultValue = {profileObjects && profileObjects.pincode} />
                             </div>
 
                             <div className = "mb-3" id = "state">
                                 <label className = "form-label"> State </label>
-                                <input className="form-control"  type = "text" ref = {stateRef} required placeholder = {profileObjects && profileObjects.state}/>
+                                <input className="form-control"  type = "text" ref = {stateRef} required defaultValue = {profileObjects && profileObjects.state}/>
                             </div>
 
                             <div className = "mb-3" id = "country">
                                 <label className = "form-label"> Country </label>
-                                <input className="form-control"  type = "text" ref = {countryRef} required placeholder = {profileObjects && profileObjects.country}/>
+                                <input className="form-control"  type = "text" ref = {countryRef} required defaultValue = {profileObjects && profileObjects.country}/>
                             </div>
 
-                            <button disabled= {loading} type = "submit" className = "btn btn-primary">Create Profile</button>
+                            <button disabled= {loading} type = "submit" className = "btn btn-primary">{!profileObjects ?<> Create Profile </>: <>Update Profile</>}</button>
 
                         </form>
                     </div>
-                </div>
-                                
+                </div> </MakeVisible>
+                               } 
         </>      
     )
 }

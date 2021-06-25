@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { database } from '../firebase/firebase';
+import Progress from '../helper_component/Progress';
+import Expire from '../helper_component/Expire';
+import MakeVisible from '../helper_component/MakeVisible';
 
 const Profile = () => {
     const [profileObjects, setProfileObjects] = useState('');
@@ -15,11 +18,16 @@ const Profile = () => {
                 setProfileObjects({
                     ...snapshot.val()
                 })
+                
             }
         })
     },[])
     return (
         <div className = "container mt-3">
+        {!profileObjects ? 
+           <> Loading... <Progress completed = {0} bgColor = "#6a1b9a"  /> </> : <Expire delay = "1000">  <Progress completed = {100} bgColor = "#6a1b9a" />  </Expire>      }
+            {profileObjects &&
+            <MakeVisible delay="1000">
             <div className="card">
                 <img src="..." className="card-img-top" alt="..." />
                 <div className="card-body">
@@ -43,7 +51,7 @@ const Profile = () => {
                             <div className = "mb-3" id = "gender">
                                 <label className = "form-label"> Gender </label>
                                 <select className = "form-select" disabled value = {profileObjects && profileObjects.gender}>
-                                    <option value = "">Male</option>
+                                    <option value = "Male">Male</option>
                                     <option value = "Female">Female</option>
                                 </select>
                             </div>
@@ -83,7 +91,8 @@ const Profile = () => {
                         </form>
                     
                 </div>
-            </div>
+            </div> </MakeVisible>
+            }
         </div>
     )
 }
