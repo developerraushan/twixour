@@ -19,7 +19,7 @@ const Header = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
-                <Link to ="/">
+                <Link to ="/" style={{ textDecoration: 'none' }}>
                     <span className="navbar-brand">Twixour</span>
                 </Link>
                 
@@ -34,12 +34,15 @@ const Header = () => {
                             <span className="nav-link" onClick = {handleLogout}>Log Out</span>
                         </li>
                         <li className="nav-item">
-                            <Link to = "/update-profile">
+                            <Link to = "/update-profile" style={{ textDecoration: 'none' }}>
                                 <span className="nav-link" href="#">Update Profile</span>
                             </Link>
                         </li>
                         <li className = "nav-item"> 
+                            <Link to = "/profile" style={{ textDecoration: 'none' }}>
                                 <span className = "nav-link">Profile</span>
+                            </Link>
+                                
                             </li>
                         </>
                     }

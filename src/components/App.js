@@ -11,6 +11,7 @@ import Header from './Header';
 import Signup from './Signup';
 import Dashboard from './Dashboard';
 import Login from './Login';
+import Profile from './Profile';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path = "/login" component = {Login} />
           <Route path = "/forgot-password" component = {ForgotPassword} />
           <PrivateRoute path = "/update-profile" component = {UpdateProfile} />
+          <PrivateRoute path = "/profile" component = {Profile} />
       </Switch>
     </Router>
     </AuthProvider>

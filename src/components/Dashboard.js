@@ -1,7 +1,5 @@
 import React, {useState} from 'react'
 import { useAuth } from '../context/AuthContext';
-import { Link, useHistory } from 'react-router-dom';
-import Header from './Header';
 
 const Dashboard = () => {
     
