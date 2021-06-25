@@ -7,7 +7,12 @@ const DetailCourse = (props) => {
     const [usersObjects, setUsersObjects] = useState('');
     const course = props.location.state.course;
     const id = props.location.state.id;
-    const studentsKeys = Object.keys(course.students.ids)
+    const [studentsKeys, setStudentsKeys] = useState('');
+    if(course.students) {
+        setStudentsKeys(studentKeys => Object.keys(course.students.ids))
+        // const studentsKeys = Object.keys(course.students.ids)
+    }
+    
     console.log("from detailcourse" ,studentsKeys)
 
     console.log(usersObjects);
@@ -54,11 +59,15 @@ const DetailCourse = (props) => {
                 </div>
                 <div className = "card-body">
                     <ul className = "list-group">
+                        {course.students &&
+                        <>
                         {studentsKeys.map(id => {
                             return <li className = "list-group-item" key = {id}>
                             {usersObjects ? <>{usersObjects[id].profile.first_name} &nbsp; {usersObjects[id].profile.last_name}</>: "Users don't exist"}
                             </li>
                         })}
+                        </> 
+                        }
                     </ul>
                 </div>
             </div>
