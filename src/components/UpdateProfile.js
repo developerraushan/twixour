@@ -2,8 +2,9 @@ import React, { useRef, useState } from 'react';
 import { database } from '../firebase/firebase';
 import { useAuth } from '../context/AuthContext';
 import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const CreateProfile = () => {
+const UpdateProfile = () => {
     
     const usersRef = database.ref(`users`);
     
@@ -52,25 +53,26 @@ const CreateProfile = () => {
     }
     return (
         <> 
-            <div className = "mt-3">
+           
                 <div className="card">
                     <div className="card-body">
-                        <h2 className = "text-center mb-4">Create Profile</h2>
+                    <Link to = "/update-credentials" className = "btn btn-primary w-100 mt-2">Update Credential</Link>
+                        <h2 className = "text-center mb-4">Update Profile</h2>
                             {error && <div className = "alert alert-danger">{error}</div>}
                         <form onSubmit = {profileCreator}>
                             <div className = "mb-3" id = "first_name">
                                 <label className = "form-label">First Name </label>
-                                <input type = "text" ref = {firstNameRef} required />
+                                <input className="form-control"  type = "text" ref = {firstNameRef} required placeholder = {currentUser && currentUser.email} />
                             </div>
 
                             <div className = "mb-3" id = "last_name">
                                 <label className = "form-label">Last Name </label>
-                                <input type = "text" ref = {lastNameRef} required />
+                                <input className="form-control" type = "text" ref = {lastNameRef} required />
                             </div>
 
                             <div className = "mb-3" id = "profile-photo">
                                 <label className = "form-label">Profile Photo</label>
-                                <input type = "text" ref = {photoURLRef} required />
+                                <input className="form-control"  type = "text" ref = {photoURLRef} required />
                             </div>
 
                             <div className = "mb-3" id = "gender">
@@ -83,32 +85,32 @@ const CreateProfile = () => {
 
                             <div className = "mb-3" id = "phone">
                                 <label className = "form-label"> Phone </label>
-                                <input type = "text" ref = {phoneRef} required />
+                                <input className="form-control"  type = "text" ref = {phoneRef} required />
                             </div>
 
                             <div className = "mb-3" id = "address">
                                 <label className = "form-label"> Address </label>
-                                <input type = "text" ref = {addressRef} required />
+                                <input className="form-control"  type = "text" ref = {addressRef} required />
                             </div>
 
                             <div className = "mb-3" id = "city">
                                 <label className = "form-label"> City </label>
-                                <input type = "text" ref = {cityRef} required />
+                                <input className="form-control"  type = "text" ref = {cityRef} required placeholder = "City" />
                             </div>
 
                             <div className = "mb-3" id = "pincode">
                                 <label className = "form-label"> Pincode </label>
-                                <input type = "text" ref = {pincodeRef} required />
+                                <input className="form-control"  type = "text" ref = {pincodeRef} required />
                             </div>
 
                             <div className = "mb-3" id = "state">
                                 <label className = "form-label"> State </label>
-                                <input type = "text" ref = {stateRef} required />
+                                <input className="form-control"  type = "text" ref = {stateRef} required />
                             </div>
 
                             <div className = "mb-3" id = "country">
                                 <label className = "form-label"> Country </label>
-                                <input type = "text" ref = {countryRef} required />
+                                <input className="form-control"  type = "text" ref = {countryRef} required />
                             </div>
 
                             <button disabled= {loading} type = "submit" className = "btn btn-primary">Create Profile</button>
@@ -116,9 +118,9 @@ const CreateProfile = () => {
                         </form>
                     </div>
                 </div>
-            </div>                     
+                                
         </>      
     )
 }
 
-export default CreateProfile
+export default UpdateProfile;

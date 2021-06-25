@@ -1,29 +1,47 @@
-import React from 'react'
-import { Nav, Navbar, NavDropdown , Form, FormControl, Button } from 'react-bootstrap';
+import React, { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Header = () => {
+    const history = useHistory;
+    const { currentUser, logout } = useAuth();
+    const [error, setError] = useState("");
+    const handleLogout = async (event) => {
+        event.preventDefault();
+        setError("");
+        try {
+            await logout();
+            history.push("/login");
+        } catch {
+            setError('Failed to log out');
+        }
+    }
     return (
-        <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="#home">Twixour</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#link">Link</Nav.Link>
-                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                </NavDropdown>
-            </Nav>
-    <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-success">Search</Button>
-    </Form>
-  </Navbar.Collapse>
-    </Navbar>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container-fluid">
+                <Link to ="/">
+                    <span className="navbar-brand" href="#">Twixour</span>
+                </Link>
+                
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav">
+                        {currentUser && 
+                        <li className = "nav-item">
+                        <span className="nav-link" onClick = {handleLogout}>Log Out</span>
+                        </li>
+                        }               
+                        <li className="nav-item">
+                            <Link to = "/update-profile">
+                                <span className="nav-link" href="#">Update Profile</span>
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     )
 }
 

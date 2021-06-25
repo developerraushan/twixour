@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../context/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 
@@ -40,27 +39,33 @@ const UpdateCredentials = () => {
     }
     return (
         <>
-        <Card>
-            <Card.Body>
-                <h2 className = "text-center mb-4">Update Profile</h2>
-                {error && <Alert variant="danger">{error}</Alert>}
-                <Form onSubmit = {handleSubmit}>
-                    <Form.Group id = "email">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control type = "email" ref = {emailRef} defaultValue = {currentUser.email} required />
-                    </Form.Group>
-                    <Form.Group id = "password">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type = "password" ref = {passwordRef} placeholder = "Leave blank to keep the same" />
-                    </Form.Group>
-                    <Form.Group id = "password-confirm">
-                        <Form.Label>Password Confirmation </Form.Label>
-                        <Form.Control type = "password" ref = {passwordConfirmRef} placeholder = "Leave blank to keep the same" />
-                    </Form.Group>
-                    <Button disabled = {loading} className = "mt-3 w-100" type = "submit">Update</Button>
-                </Form>
-            </Card.Body>
-        </Card>
+
+<div className = "card">
+    <div className = "card-body">
+        <h2 className = "text-center mb-4">Update Profile</h2>
+        {error && <div className="alert alert-danger">{error}</div>}
+        <form onSubmit = {handleSubmit}>
+
+            <div className = "mb-3" id = "email">
+                <label className = "form-label"> Email </label>
+                <input className="form-control"  type = "email" ref = {emailRef} defaultValue = {currentUser.email} required />
+            </div>
+
+            <div className = "mb-3" id = "password">
+                <label className = "form-label"> Password </label>
+                <input className="form-control"  type = "password" ref = {passwordRef} placeholder = "Leave blank to keep the same" />
+            </div>
+
+            <div className = "mb-3" id = "password-confirm">
+                <label className = "form-label"> Password Confirmation </label>
+                <input className="form-control"  type = "password" ref = {passwordConfirmRef} placeholder = "Leave blank to keep the same" />
+            </div>
+
+            <button disabled = {loading} className = "btn btn-primary mt-3 w-100" type = "submit">Update</button>
+        </form>
+    </div>
+</div>
+
         <div className = "w-100 text-center mt-2">
              <Link to = "/">Cancel</Link>
         </div>
