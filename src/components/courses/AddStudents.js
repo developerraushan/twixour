@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useHistory } from 'react-router-dom';
 import { database } from '../../firebase/firebase';
 
 const AddStudents = (props) => {
+    const history = useHistory();
     const id = props.location.state.id;
-    console.log("add students id", id);
+    
     const [multiValue, setMultiValue] = useState([]);
     const [userObjects, setUserObjects] = useState('');
     const usersRef = database.ref(`users`);
@@ -28,14 +30,14 @@ const AddStudents = (props) => {
         // setMultiValue(Array.isArray(event.target.selectedOptions) ? event.target.selectedOptions.map(x => x.value) : [])
 
         // setMultiValue([].slice.call(event.target.selectedOptions))
-        console.log(event.target.value);
+        
         setMultiValue(multivalue => ({...multiValue, [name]: value}))
         
     }
    const onSubmit = (event) => {
 
        event.preventDefault();
-       console.log("values given", multiValue);
+      
 
 
 
@@ -46,7 +48,7 @@ const AddStudents = (props) => {
         coursesRef.child(id).child(`students`).set({
             ids: multiValue 
         });
-        //history.push("/");
+        history.push("/courses");
     } catch {
         setError("Couldn't create User Profile")
     }
@@ -59,7 +61,7 @@ const AddStudents = (props) => {
     return (
         <div className = "container mt-3">
         <form onSubmit = {onSubmit}>
-
+        {error && <div className="alert alert-danger">{error}</div>}
         {userObjects ? <>
             {usersKeys.map(id => {
                 return <div className = "form-check" key = {id} >
@@ -83,7 +85,7 @@ const AddStudents = (props) => {
         </div> 
         : "Students don't exist"} */}
         
-            <button className = "btn btn-primary mt-3" type = "submit">Add</button>
+            <button disabled = {loading} className = "btn btn-primary mt-3" type = "submit">Add</button>
         </form>
         </div>
     )

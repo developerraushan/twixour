@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import { database } from '../../firebase/firebase';
 import { useHistory } from 'react-router';
 
@@ -11,6 +11,7 @@ const AddCourse = (props) => {
             startDate: '',
             endDate: '',
             cost: '',
+            students: [],
         }
     );
     const [loading, setLoading] = useState(false);
@@ -32,6 +33,7 @@ const AddCourse = (props) => {
                 startDate: inidvidualCourse.startDate ,
                 endDate: inidvidualCourse.endDate ,
                 cost: inidvidualCourse.cost,
+                students: inidvidualCourse.students,
                 
             });
             history.push("/courses");
@@ -40,7 +42,7 @@ const AddCourse = (props) => {
         }
         setLoading(false);    
     }
-
+    
     return (
         <div className = "container mt-3">
         {error && <div className = "alert alert-danger">{error}</div>}

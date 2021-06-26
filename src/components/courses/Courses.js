@@ -7,8 +7,9 @@ const Courses = () => {
     const [coursesObjects, setCoursesObjects] = useState('');
     const coursesRef = database.ref(`courses`);
     const courses = Object.keys(coursesObjects);
-    console.log(courses);
+    
     useEffect(()=>{
+        let isMounted = true
         coursesRef.on('value', snapshot => {
             if(snapshot.val() != null) {
                 setCoursesObjects({
@@ -16,9 +17,10 @@ const Courses = () => {
                 })
                 
             }
-        })
+        });
+        return () => { isMounted = false };
     },[])
-    //console.log(courses);
+    
     return (
         <div className = "container mt-3">
             <Link to = "/add-course" style = {{ textDecoration: 'none' }}>

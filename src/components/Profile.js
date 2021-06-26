@@ -7,7 +7,7 @@ import MakeVisible from '../helper_component/MakeVisible';
 
 const Profile = () => {
     const [profileObjects, setProfileObjects] = useState('');
-    console.log(profileObjects.address);
+    
     const usersRef = database.ref(`users`);
     
     const { currentUser } = useAuth();

@@ -8,26 +8,28 @@ const DetailCourse = (props) => {
     const course = props.location.state.course;
     const id = props.location.state.id;
     const [studentsKeys, setStudentsKeys] = useState('');
-    if(course.students) {
-        setStudentsKeys(studentKeys => Object.keys(course.students.ids))
-        // const studentsKeys = Object.keys(course.students.ids)
-    }
-    
-    console.log("from detailcourse" ,studentsKeys)
-
-    console.log(usersObjects);
 
 
     useEffect(()=>{
+        let isMounted = true
         usersRef.on('value', snapshot => {
             if(snapshot.val() != null) {
                 setUsersObjects({
                     ...snapshot.val()
                 })
             } 
-        })
+        });
+        return () => { isMounted = false };
     },[])
 
+    useEffect(() => {   
+        let isMounted = true  
+        if(course.students) {
+            setStudentsKeys(studentKeys => Object.keys(course.students.ids))
+        }   
+        return () => { isMounted = false };
+    }, course.students)
+    
 
     return (
         <div className = "container mt-3">
@@ -52,26 +54,28 @@ const DetailCourse = (props) => {
                 <span className = "btn btn-primary">Add Students to this course</span>
                 </Link>
             </div>
-                { course &&
+            { course &&
             <div className = "card mt-3">
                 <div className = "card-title text-center">
                     <strong>List of students enrolled in the course</strong>
                 </div>
                 <div className = "card-body">
                     <ul className = "list-group">
-                        {course.students &&
-                        <>
+                        {Array.isArray(studentsKeys) ? 
+                            <>
                         {studentsKeys.map(id => {
                             return <li className = "list-group-item" key = {id}>
                             {usersObjects ? <>{usersObjects[id].profile.first_name} &nbsp; {usersObjects[id].profile.last_name}</>: "Users don't exist"}
                             </li>
                         })}
-                        </> 
+                        </>
+                        : "Students List is yet to be available"
+                         
                         }
                     </ul>
                 </div>
             </div>
-            }
+            }  
             
         </div>
     )

@@ -18,6 +18,7 @@ const Header = () => {
     }
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        {error && <div className="alert alert-danger">{error}</div>}
             <div className="container-fluid">
                 <Link to ="/" style={{ textDecoration: 'none' }}>
                     <span className="navbar-brand">Twixour</span>
