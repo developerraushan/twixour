@@ -16,6 +16,7 @@ import Courses from './courses/Courses';
 import AddCourse from './courses/AddCourse';
 import DetailCourse from './courses/DetailCourse';
 import AddStudents from './courses/AddStudents';
+import CreateProfile from './authRelated/CreateProfile';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           <Route path = "/signup" component = {Signup} />
           <Route path = "/login" component = {Login} />
           <Route path = "/forgot-password" component = {ForgotPassword} />
+          <PrivateRoute path = "/create-profile" component = {CreateProfile} />
           <PrivateRoute path = "/update-profile" component = {UpdateProfile} />
           <PrivateRoute path = "/profile" component = {Profile} />
           <PrivateRoute path = "/courses" component = {Courses} />

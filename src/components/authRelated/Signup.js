@@ -23,7 +23,7 @@ const Signup = () => {
             setLoading(true)
             await signup(emailRef.current.value, passwordRef.current.value);
             
-            history.push("/update-profile");
+            history.push("/create-profile");
         } catch {
             setError('Failed to create an account')
         }

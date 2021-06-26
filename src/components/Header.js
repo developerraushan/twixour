@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const Header = () => {
-    const history = useHistory;
+    const history = useHistory();
     const { currentUser, logout } = useAuth();
     const [error, setError] = useState("");
     const handleLogout = async (event) => {
