@@ -3,7 +3,9 @@ import React, { useRef, useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 
+
 const Login = () => {
+    let logo = require('../../assets/Images/8.png').default;
     const history = useHistory();
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -26,35 +28,35 @@ const Login = () => {
     }
    
     return (
-        <>
+        <div className = "container">
+            <img src = {logo} alt = "Image" className = "mx-auto d-block" width = "50%" height = "50%" />
+            <div className = "card" style = {{border: "2px solid #e82856",fontSize: "32px"}}>
+                <div className = "card-body">
+        
+                {error && <div className="alert alert-danger">{error}</div>}
+                    <form onSubmit = {handleSubmit}>
 
-<div className = "card">
-    <div className = "card-body">
-        <h2 className = "text-center mb-4">Log In</h2>
-        {error && <div className="alert alert-danger">{error}</div>}
-        <form onSubmit = {handleSubmit}>
+                        <div className = "mb-3" id = "email">
+                            <label className = "form-label"> Email </label>
+                            <input className="form-control"  type = "email" ref = {emailRef} required />
+                        </div>
 
-            <div className = "mb-3" id = "email">
-                <label className = "form-label"> Email </label>
-                <input className="form-control"  type = "email" ref = {emailRef} required />
-            </div>
-
-            <div className = "mb-3" id = "password">
-                <label className = "form-label"> Password </label>
-                <input className="form-control"  type = "password" ref = {passwordRef} required />
-            </div>
+                        <div className = "mb-3" id = "password">
+                            <label className = "form-label"> Password </label>
+                            <input className="form-control"  type = "password" ref = {passwordRef} required />
+                        </div>
 
            
 
-            <button disabled = {loading} className = "btn btn-primary mt-3 w-100" type = "submit">Log In</button>
-        </form>
+                        <button disabled = {loading} className = "btn btn-danger mt-3 w-100" type = "submit">Log In</button>
+                    </form>
 
-        <div className = "w-100 text-center mt-3">
-            <Link to = "/forgot-password">Forgot Password</Link>
-        </div>
+                    <div className = "w-100 text-center mt-3" style = {{fontSize: "24px"}}>
+                        <Link to = "/forgot-password"  style = {{textDecoration : "none"}}>Forgot Password</Link>
+                    </div>
 
-    </div>
-</div>
+                </div>
+            </div>
 
 
 
@@ -84,10 +86,10 @@ const Login = () => {
                 </div>
             </Card.Body>
         </Card> */}
-        <div className = "w-100 text-center mt-2">
-            Need an account? <Link to = "/signup">Sign Up</Link>
+        <div className = "w-100 text-center mt-2" style = {{fontSize: "24px"}}>
+            Need an account? <Link to = "/signup" style = {{textDecoration: 'none'}}>Sign Up</Link>
         </div>
-        </>
+        </div>
     )
 }
 
