@@ -42,6 +42,7 @@ const CreateProfile = () => {
                 pincode: pincodeRef.current.value,
                 state: stateRef.current.value,
                 country: countryRef.current.value,
+                email: currentUser.email
             });
             history.push("/");
         } catch {
