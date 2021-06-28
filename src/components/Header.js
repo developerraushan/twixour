@@ -50,6 +50,13 @@ const Header = () => {
                                 <span className = "nav-link">Courses</span>
                             </Link>
                         </li>
+
+                        <li className = "nav-item">
+                            <Link to = "/projects" style = {{ textDecoration: 'none'}}>
+                                <span className = "nav-link">Projects</span>
+                            </Link>
+                        </li>
+
                         </>
                     }
                     </ul>

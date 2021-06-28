@@ -28,9 +28,10 @@ const Login = () => {
     }
    
     return (
-        <div className = "container">
-            <img src = {logo} alt = "Image" className = "mx-auto d-block" width = "50%" height = "50%" />
-            <div className = "card" style = {{border: "2px solid #e82856",fontSize: "32px"}}>
+        <div className = "container mx-auto d-block" style = {{marginTop: "80px"}}>
+            <img src = {logo} alt = "Image" className = "mx-auto d-block" width = "100%" height = "100%" />
+            <div style = {{marginTop: "30px"}}></div>
+            <div className = "card mt-5" style = {{border: "2px solid #e82856",fontSize: "32px", marginTop: "20px"}}>
                 <div className = "card-body">
         
                 {error && <div className="alert alert-danger">{error}</div>}

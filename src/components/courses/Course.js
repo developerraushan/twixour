@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom';
 const Course = (props) => {
     const courses = props.coursesObjects;
     const id = props.id;
-    
+    const pathname = "/courses/" + courses[id].title
+    console.log(pathname)
     return (
         <div className = "container mt-3">
             <div className = "card">
                 <div className="title text-center">
                     Course Title: &nbsp;&nbsp;<strong>
                         <Link to = {{
-                            pathname: "/course-detail",
+                            pathname: pathname,
                             state: {
                                 course: courses[id],
                                 id: id
