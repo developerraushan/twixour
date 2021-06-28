@@ -6,12 +6,12 @@ import { database } from '../firebase/firebase';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     const { currentUser } = useAuth();
-   
+    //console.log(rest.hello)
     return (
         <>
         <Header />
             <Route {...rest} render = {props => {
-            return currentUser ? <Component {...props}  /> : <Redirect to = "/login" />
+            return currentUser ? <Component {...props} {...rest}  /> : <Redirect to = "/login" />
         }}></Route>
         </>
     )
@@ -21,4 +21,4 @@ export default PrivateRoute
 
 
 
-
+//currentUser ? <Component {...props} {...rest}  /> : <Redirect to = "/login" />

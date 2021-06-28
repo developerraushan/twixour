@@ -48,7 +48,7 @@ const UpdateCredentials = () => {
 
             <div className = "mb-3" id = "email">
                 <label className = "form-label"> Email </label>
-                <input className="form-control"  type = "email" ref = {emailRef} defaultValue = {currentUser.email} required />
+                <input disabled className="form-control"  type = "email" ref = {emailRef} defaultValue = {currentUser.email} required />
             </div>
 
             <div className = "mb-3" id = "password">

@@ -31,12 +31,12 @@ const AddProject = () => {
                 title: inidvidualProject.title ,
                 dateAnnounced: inidvidualProject.dateAnnounced ,
                 submissionDate: inidvidualProject.submissionDate ,
-                endDate: inidvidualProject.endDate ,
+                
                 description: inidvidualProject.description,
                 students: inidvidualProject.students,
                 
             });
-            history.push("/courses");
+            history.push("/projects");
         } catch {
             setError("Couldn't create User Profile")
         }
@@ -52,27 +52,27 @@ const AddProject = () => {
                     <input name = "title" className="form-control"  type = "text"  required onChange = {handleChange} value = {inidvidualProject.title} />
                 </div>
 
-                <div className = "mb-3" id = "duration">
+                <div className = "mb-3" id = "dateAnnounced">
                     <label className = "form-label"> Date Announced </label>
-                    <input name = "duration" className="form-control"  type = "text"  required onChange = {handleChange} />
+                    <input name = "dateAnnounced" className="form-control"  type = "text"  required onChange = {handleChange} />
                 </div>
 
-                <div className = "mb-3" id = "startDate">
+                <div className = "mb-3" id = "submissionDate">
                     <label className = "form-label"> Submission Date </label>
-                    <input name = "startDate" className="form-control"  type = "text"  required onChange = {handleChange} />
+                    <input name = "submissionDate" className="form-control"  type = "text"  required onChange = {handleChange} />
                 </div>
 
-                <div className = "mb-3" id = "endDate">
+                {/* <div className = "mb-3" id = "endDate">
                     <label className = "form-label"> End Date </label>
                     <input name = "endDate" className="form-control"  type = "text"  required onChange = {handleChange} />
-                </div>
+                </div> */}
 
                 <div className = "mb-3" id = "cost">
                     <label className = "form-label"> Description </label>
-                    <input name = "cost" className="form-control"  type = "text"  required onChange = {handleChange} />
+                    <input name = "description" className="form-control"  type = "text"  required onChange = {handleChange} />
                 </div>
 
-                <button disabled = {loading} className = "btn btn-primary mt-3 w-100" type = "submit">Create Course</button>
+                <button disabled = {loading} className = "btn btn-primary mt-3 w-100" type = "submit">Create Project</button>
             </form>
         </div>
     )

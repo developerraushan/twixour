@@ -3,13 +3,15 @@ import { database } from '../../firebase/firebase';
 import { useAuth } from '../../context/AuthContext';
 import { useHistory } from 'react-router-dom';
 
-const CreateProfile = () => {
+const CreateProfile = (props) => {
     
     const usersRef = database.ref(`users`);
     const { currentUser } = useAuth();
     //const profileURL = usersRef.child(currentUser.uid).child(`profile`);
-    
+    const coursesObjects = props.coursesObjects;
+    const courses = Object.keys(coursesObjects);
     const history = useHistory();
+
     const firstNameRef = useRef();
     const lastNameRef = useRef();
     const photoURLRef = useRef();
@@ -20,6 +22,7 @@ const CreateProfile = () => {
     const addressRef = useRef();
     const cityRef = useRef();
     const phoneRef = useRef();
+    const courseAppliedRef = useRef();
 
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -42,7 +45,8 @@ const CreateProfile = () => {
                 pincode: pincodeRef.current.value,
                 state: stateRef.current.value,
                 country: countryRef.current.value,
-                email: currentUser.email
+                email: currentUser.email,
+                course: courseAppliedRef.current.value
             });
             history.push("/");
         } catch {
@@ -50,6 +54,8 @@ const CreateProfile = () => {
         }
         setLoading(false);
     }
+    const course1 = courses[0]
+    console.log("create profile first time",coursesObjects[courses[2]].title);
     return (
         <> 
             <div className="card">
@@ -77,6 +83,16 @@ const CreateProfile = () => {
                             <select className = "form-select" ref = {genderRef} required >
                                 <option value = "Male">Male</option>
                                 <option value = "Female">Female</option>
+                            </select>
+                        </div>
+
+                        <div className = "mb-3" id = "course">
+                            <label className = "form-label"> Select Course </label>
+                            <select className = "form-select" ref = {courseAppliedRef} required >
+                            {courses.map(id => {
+                                return <option value = {coursesObjects[id].title} key = {id}>{coursesObjects[id].title}</option>
+                            })}
+                                
                             </select>
                         </div>
 

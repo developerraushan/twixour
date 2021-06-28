@@ -22,6 +22,7 @@ const Profile = () => {
             }
         })
     },[])
+    
     return (
         <div className = "container mt-3">
         {!profileObjects ? 
@@ -29,9 +30,9 @@ const Profile = () => {
             {profileObjects &&
             <MakeVisible delay="1000">
             <div className="card">
-                <img src="..." className="card-img-top" alt="..." />
+                <img src={profileObjects.photoURL} className="card-img-top" alt="..."  style = {{width: "40%"}} />
                 <div className="card-body">
-                    <h5 className="card-title">About</h5>
+                    <h4 className="card-title" style = {{fontSize: "1.4rem"}}>About</h4>
                     <form>
                             <div className = "mb-3" id = "first_name">
                                 <label className = "form-label">First Name </label>
@@ -43,9 +44,9 @@ const Profile = () => {
                                 <input className="form-control" type = "text" disabled value  = {profileObjects && profileObjects.last_name}  />
                             </div>
 
-                            <div className = "mb-3" id = "profile-photo">
-                                <label className = "form-label">Profile Photo</label>
-                                <input className="form-control"  type = "text" disabled value = {profileObjects && profileObjects.photoURL}/>
+                            <div className = "mb-3" id = "course">
+                                <label className = "form-label">Course Enrolled</label>
+                                <input className="form-control"  type = "text" disabled value = {profileObjects && profileObjects.course}/>
                             </div>
 
                             <div className = "mb-3" id = "gender">

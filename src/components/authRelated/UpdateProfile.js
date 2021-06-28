@@ -7,14 +7,15 @@ import Progress from '../../helper_component/Progress';
 import Expire from '../../helper_component/Expire';
 import MakeVisible from '../../helper_component/MakeVisible';
 
-const UpdateProfile = () => {
+const UpdateProfile = (props) => {
     const [profileObjects, setProfileObjects] = useState('');
     
     const usersRef = database.ref(`users`);
     
     const { currentUser } = useAuth();
     const profileURL = usersRef.child(currentUser.uid).child(`profile`);
-    
+    const coursesObjects = props.coursesObjects;
+    const courses = Object.keys(coursesObjects);
     const history = useHistory();
     const firstNameRef = useRef();
     const lastNameRef = useRef();
@@ -26,6 +27,7 @@ const UpdateProfile = () => {
     const addressRef = useRef();
     const cityRef = useRef();
     const phoneRef = useRef();
+    const courseAppliedRef = useRef();
 
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -58,6 +60,7 @@ const UpdateProfile = () => {
                 pincode: pincodeRef.current.value,
                 state: stateRef.current.value,
                 country: countryRef.current.value,
+                course: courseAppliedRef.current.value
             });
             history.push("/");
         } catch {
@@ -70,10 +73,12 @@ const UpdateProfile = () => {
            {!profileObjects ? 
            <> Loading... <Progress completed = {0} bgColor = "#6a1b9a"  /> </> : <Expire delay = "900">  <Progress completed = {100} bgColor = "#6a1b9a" />  </Expire>      }
            <MakeVisible delay="2000">
-                <div className="card">
+           <Link to = "/update-credentials" className = "btn btn-primary w-100 mt-5">Update Credential</Link>
+                <div className="card mt-5">
+                <img src={profileObjects && profileObjects.photoURL} className="card-img-top" alt="..."  style = {{width: "40%"}} />
                     <div className="card-body">
-                    <Link to = "/update-credentials" className = "btn btn-primary w-100 mt-2">Update Credential</Link>
-                        <h2 className = "text-center mb-4">Update Profile</h2>
+                    
+                        
                             {error && <div className = "alert alert-danger">{error}</div>}
                         <form onSubmit = {profileCreator}>
                             <div className = "mb-3" id = "first_name">
@@ -98,6 +103,16 @@ const UpdateProfile = () => {
                                     <option value = "Female">Female</option>
                                 </select>
                             </div>
+
+                            <div className = "mb-3" id = "course">
+                            <label className = "form-label"> Select Course </label>
+                            <select className = "form-select" ref = {courseAppliedRef} required defaultValue = {profileObjects && profileObjects.course} >
+                            {courses.map(id => {
+                                return <option value = {coursesObjects[id].title} key = {id}>{coursesObjects[id].title}</option>
+                            })}
+                                
+                            </select>
+                        </div>
 
                             <div className = "mb-3" id = "phone">
                                 <label className = "form-label"> Phone </label>

@@ -21,6 +21,8 @@ import CreateProfile from './authRelated/CreateProfile';
 import MyRouter from './MyRouter';
 import Projects from './projects/Projects';
 import AddProject from './projects/AddProject';
+import AddStudentForProject from './projects/AddStudentForProject';
+import DetailProject from './projects/DetailProject';
 
 const App = () => {
   // current user
@@ -81,8 +83,8 @@ projectsURL.on('value', snapshot => {
           <MyRouter path = "/signup" component = {Signup} />
           <MyRouter path = "/login" component = {Login} />
           <MyRouter path = "/forgot-password" component = {ForgotPassword} />
-          <PrivateRoute path = "/create-profile" component = {CreateProfile} />
-          <PrivateRoute path = "/update-profile" component = {UpdateProfile} />
+          <PrivateRoute path = "/create-profile" coursesObjects = {coursesObjects} hello = {"hello"} component = {CreateProfile} />
+          <PrivateRoute path = "/update-profile" coursesObjects = {coursesObjects} component = {UpdateProfile} />
           <PrivateRoute path = "/profile" component = {Profile} />
           <PrivateRoute exact path = "/courses" component = {Courses} />
           <PrivateRoute path = "/add-course" component = {AddCourse} />
@@ -90,6 +92,8 @@ projectsURL.on('value', snapshot => {
           <PrivateRoute path = "/course/add-students" component = {AddStudents} />
           <PrivateRoute exact path = "/projects" component = {Projects} />
           <PrivateRoute path='/projects/add-project' component = {AddProject} />
+          <PrivateRoute path = "/projects/:pathPram1" component = {DetailProject} />
+          <PrivateRoute path = "/project/add-students" component = {AddStudentForProject} />
       </Switch>
     </Router>
     </AuthProvider>
