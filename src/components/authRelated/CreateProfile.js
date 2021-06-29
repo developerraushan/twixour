@@ -90,7 +90,7 @@ const CreateProfile = (props) => {
                             <label className = "form-label"> Select Course </label>
                             <select className = "form-select" ref = {courseAppliedRef} required >
                             {courses.map(id => {
-                                return <option value = {coursesObjects[id].title} key = {id}>{coursesObjects[id].title}</option>
+                                return <option value = {id} key = {id}>{coursesObjects[id].title}</option>
                             })}
                                 
                             </select>

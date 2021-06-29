@@ -4,7 +4,7 @@ const Course = (props) => {
     const courses = props.coursesObjects;
     const id = props.id;
     const pathname = "/courses/" + courses[id].title
-    console.log(pathname)
+    //console.log(pathname)
     return (
         <div className = "container mt-3">
             <div className = "card">

@@ -1,7 +1,7 @@
-import React, {useState, useEffect } from 'react'
-import { useAuth } from '../context/AuthContext';
+import React from 'react'
+import { useAuth } from '../../context/AuthContext';
 
-const Dashboard = (props) => {
+const MyProjects = (props) => {
     //const [profileObjects, setProfileObjects] = useState('');
     //const [coursesObjects, setCoursesObjects] = useState('');
     const profileObjects = props.profileObjects;
@@ -9,7 +9,7 @@ const Dashboard = (props) => {
     //const currentCourse = coursesObjects[profileObjects.course]
     const currentCourse = (coursesObjects[profileObjects.course]);
     const { currentUser } = useAuth();
-    let logo = require('../assets/Images/dashboard.png').default;
+    let logo = require('../../assets/Images/my_projects.png').default;
     const projectObjects = props.projectObjects;
     const arrayProjectObjects = Object.values(projectObjects)
     // const studentAssignment = 
@@ -32,41 +32,27 @@ const Dashboard = (props) => {
     //console.log(projectObjects);
     return (
         <div className = "container">
-        <div className = "row">
+        <div className = "row mt-5">
             <img src = {logo} alt = "dashboard" className = "mx-auto d-block" style = {{width: "70%"}} />
-            {/* <h2 className = "text-center mb-4">DASHBOARD</h2> */}
+            {/* <h2 className = "text-center mb-4">My Projects</h2> */}
         </div>
-        <div className = "row justify-content-around" style = {{fontSize: "1.2rem"}}>
-            <div className = "col-6">
-            <strong>Email: </strong> {currentUser.email}
-            </div>
-            <div className = "col-3">
-            <strong>Enrolled in:</strong> {currentCourse && currentCourse.title}
-            </div>
-            
-            
-        </div>
-        <div className ="row mt-5" style = {{fontSize: "1.3rem"}}>
-            Fee due: &#8377;
-        </div>
+        
 
         <div className ="row mt-5" style = {{fontSize: "1.3rem"}}>
-            Projects in this course
+            <span style ={{fontSize: "1.5rem"}}>Course:  {currentCourse && currentCourse.title}</span>
             {projects.map((project, index) => {
-                return <div key = {index}>
+                return <div className = "mt-5" key = {index}>
                 Title: {project.title} <br />
-                Date Announced: {project.dateAnnounced} <br /> <br />
+                Date Announced: {project.dateAnnounced}
                 </div>
             })}
         </div>
 
-        <div className ="row mt-5" style = {{fontSize: "1.3rem"}}>
-            You have submitted: ______ Projects
-        </div>
+       
             
             
         </div>
     )
 }
 
-export default Dashboard
+export default MyProjects

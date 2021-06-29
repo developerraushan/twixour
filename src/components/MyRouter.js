@@ -5,6 +5,7 @@ import Header from './Header';
 const MyRouter = ({ component: Component, ...rest }) => {
     
     const location = useLocation().pathname;
+    //
     //console.log(location)
    
     return (

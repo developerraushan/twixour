@@ -17,7 +17,7 @@ const Header = () => {
         }
     }
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
         {error && <div className="alert alert-danger">{error}</div>}
             <div className="container-fluid">
                 <Link to ="/" style={{ textDecoration: 'none' }}>
@@ -34,6 +34,14 @@ const Header = () => {
                         <li className="nav-item">
                             <span className="nav-link" onClick = {handleLogout}>Log Out</span>
                         </li>
+
+                        <li className="nav-item">
+                            <Link to = "/my-projects" style={{ textDecoration: 'none' }}>
+                                <span className="nav-link" href="#"> My Projects </span>
+                            </Link>
+                        </li>
+
+
                         <li className="nav-item">
                             <Link to = "/update-profile" style={{ textDecoration: 'none' }}>
                                 <span className="nav-link" href="#">Update Profile</span>

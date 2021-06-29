@@ -24,6 +24,7 @@ import AddProject from './projects/AddProject';
 import AddStudentForProject from './projects/AddStudentForProject';
 import DetailProject from './projects/DetailProject';
 import LoginChecker from './LoginCheker';
+import MyProjects from './projects/MyProjects';
 
 const App = () => {
   // current user
@@ -73,13 +74,16 @@ projectsURL.on('value', snapshot => {
     } 
 })
 },[])
-
+    
   return (
     <AuthProvider>
     <Router>
      
       <Switch>
-          <PrivateRoute exact path= "/" coursesObjects = {coursesObjects} component = {Dashboard} />
+          <LoginChecker exact path= "/" projectObjects = {projectObjects} coursesObjects = {coursesObjects} component = {Dashboard} />
+
+          <LoginChecker exact path= "/my-projects" projectObjects = {projectObjects} coursesObjects = {coursesObjects} component = {MyProjects} />
+
           <PrivateRoute  path= "/update-credentials" component = {UpdateCredentials} />
           <MyRouter path = "/signup" component = {Signup} />
           <MyRouter path = "/login" component = {Login} />
