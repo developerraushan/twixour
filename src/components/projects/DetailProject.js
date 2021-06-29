@@ -7,9 +7,10 @@ const DetailProject = (props) => {
     const usersRef = database.ref(`users`);
     const [usersObjects, setUsersObjects] = useState('');
     const project = props.location.state.project;
+    const currentCourse = props.location.state.course;
     const id = props.location.state.id;
     const [studentsKeys, setStudentsKeys] = useState('');
-
+    console.log(currentCourse.title)
 
     useEffect(()=>{
         let isMounted = true
@@ -41,6 +42,8 @@ const DetailProject = (props) => {
                     </strong>
                 </div>
                 <div className = "card-body">
+                    <strong>Course</strong>: &nbsp; &nbsp; {currentCourse.title} <br />
+                    <strong>Topic</strong>: &nbsp; &nbsp; {project.tag} <br />
                     <strong>Description:</strong> &nbsp;&nbsp;{project.description} <br/>
                     <strong>Date Announced</strong> &nbsp;&nbsp;{project.dateAnnounced} <br/>
                     <strong>Submission Date</strong> &nbsp;&nbsp;{project.submissionDate} <br/>

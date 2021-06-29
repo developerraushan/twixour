@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import { database } from '../../firebase/firebase';
 
-const AddProject = () => {
+const AddProject = (props) => {
     const history = useHistory();
+    const coursesObjects = props.coursesObjects;
+    const courses = Object.keys(coursesObjects);
+    const m_courseRef = useRef();
+    const tagRef = useRef();
     const [inidvidualProject, setindividualProject] = useState(
         {
             title: '',
@@ -11,6 +15,8 @@ const AddProject = () => {
             submissionDate: '',
             endDate: '',
             description: '',
+            tag: '',
+            course: '',
             students: [],
         }
     );
@@ -18,12 +24,14 @@ const AddProject = () => {
     const [error, setError] = useState('');
     const projectsRef = database.ref(`projects`);
     const handleChange = (event) => {
-        const {name, value} = event.target
+        const {name, value} = event.target;
         setindividualProject(inidvidualProject => ({...inidvidualProject, [name]: value}))
         
     }
+    //console.log(m_courseRef.current);
     const handleSubmit = (event) => {
         event.preventDefault();
+        
         try {
             setError('');
             setLoading(true);
@@ -31,14 +39,15 @@ const AddProject = () => {
                 title: inidvidualProject.title ,
                 dateAnnounced: inidvidualProject.dateAnnounced ,
                 submissionDate: inidvidualProject.submissionDate ,
-                
+                tag: tagRef.current.value,
                 description: inidvidualProject.description,
+                course: m_courseRef.current.value,
                 students: inidvidualProject.students,
                 
             });
             history.push("/projects");
         } catch {
-            setError("Couldn't create User Profile")
+            setError("Couldn't create new Project")
         }
         setLoading(false);    
     }
@@ -51,6 +60,34 @@ const AddProject = () => {
                     <label className = "form-label"> Title </label>
                     <input name = "title" className="form-control"  type = "text"  required onChange = {handleChange} value = {inidvidualProject.title} />
                 </div>
+
+                <div className = "mb-3" id = "tag">
+                    <label className = "form-label"> Tag </label>
+                    <select name = "tag" className = "form-select" ref = {tagRef}  required >
+                        
+                        <option  value = "Scratch">Scratch</option>
+                        <option value = "Figma">Figma</option>
+                        <option value = "Html">Html</option>
+                        <option value = "CSS">CSS</option>
+                        <option value = "Bootstrap">Bootstrap</option>
+                        <option value = "Python">Python</option>
+                        <option value = "Django">Django</option>
+                    </select>
+                </div>
+
+
+                <div className = "mb-3" id = "course">
+                    <label className = "form-label"> Select Course </label>
+                    <select  name = "course" className = "form-select"  ref = {m_courseRef} required >
+                    
+                        {courses.map(id => {
+                            return <option value = {id} key = {id}>{coursesObjects[id].title}</option>
+                        })}
+                                
+                    </select>
+                </div>
+
+
 
                 <div className = "mb-3" id = "dateAnnounced">
                     <label className = "form-label"> Date Announced </label>

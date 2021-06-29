@@ -4,14 +4,14 @@ import { database } from '../../firebase/firebase';
 
 import Project from './Project';
 
-const Projects = () => {
+const Projects = (props) => {
     const [projectsObjects, setProjectsObjects] = useState('');
-    const coursesRef = database.ref(`projects`);
+    const projectsRef = database.ref(`projects`);
     const projects = Object.keys(projectsObjects);
-    
+    const coursesObjects = props.coursesObjects;
     useEffect(()=>{
         let isMounted = true
-        coursesRef.on('value', snapshot => {
+        projectsRef.on('value', snapshot => {
             if(snapshot.val() != null) {
                 setProjectsObjects({
                     ...snapshot.val()
@@ -29,7 +29,7 @@ const Projects = () => {
             </Link>
 
              {projects.map(id => {
-                return <Project projectsObjects = {projectsObjects} key = {id} id = {id}  />
+                return <Project coursesObjects = {coursesObjects} projectsObjects = {projectsObjects} key = {id} id = {id}  />
             })} 
             
         </div>
