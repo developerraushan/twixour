@@ -101,7 +101,7 @@ projectsURL.on('value', snapshot => {
           <LoginChecker path = "/projects/:pathPram1" component = {DetailProject} />
           <LoginChecker path = "/project/add-students" component = {AddStudentForProject} />
 
-          <LoginChecker path = "/:pathPram1/:pathPram2/:pathPram3" component = {IndiProjectDetail} />
+          <LoginChecker path = "/:pathPram1/:pathPram2/:pathPram3" projectObjects = {projectObjects} coursesObjects = {coursesObjects} component = {IndiProjectDetail} />
       </Switch>
     </Router>
     </AuthProvider>

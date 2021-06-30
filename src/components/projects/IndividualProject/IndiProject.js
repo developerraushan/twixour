@@ -14,19 +14,25 @@ const IndiProject = (props) => {
     
     const pathname ="/" + currentCourse.title + "/" + profileObjects.first_name +  "/" + project.title  
     return (
-        <div className = "row mt-5">
-            <span>Title: <Link to = {{
+        <div className = "container">
+        <div className = "row mt-4">
+            <span>Title: {project.title}</span>
+            
+                <span>Date Announced: 
+                 {project.dateAnnounced} 
+                </span>
+                
+        </div>
+        <div className = "row mt-3">
+        <Link to = {{
                 pathname: pathname,
                 state: {
                     project: project,
                     id: id,
                     currentCourse: currentCourse
                 }
-            }} style = {{marginLeft: "20px", textDecoration: "none"}} >{project.title}</Link> </span>
-            
-                <span>Date Announced: 
-                 {project.dateAnnounced} 
-                </span>
+            }} style = {{marginLeft: "20px", textDecoration: "none"}} ><button className = "btn btn-danger">Start</button></Link>
+        </div>
         </div>
     )
 }

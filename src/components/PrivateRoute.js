@@ -26,7 +26,7 @@ const PrivateRoute = ({ component: Component, projectObjects : projectObjects, c
         <>
         <Header />
             <Route {...rest} render = {props => {
-            return  <Component projectObjects = {projectObjects} profileObjects = {profileObjects} coursesObjects = {coursesObjects} {...props} {...rest}  /> 
+            return  <Component projectObjects = {projectObjects} profileObjects = {profileObjects} currentUser = {currentUser} coursesObjects = {coursesObjects} {...props} {...rest}  /> 
         }}></Route>
         </>
     )

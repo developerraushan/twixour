@@ -1,15 +1,23 @@
 import React, { useState } from 'react'
+import { database } from '../../../firebase/firebase';
 
 const IndiProjectDetail = (props) => {
     const [disabledStatus, setDisabledStatus] = useState('');
+    const currentUser = props.currentUser;
+    const usersRef = database.ref(`users`);
     const project = props.location.state.project;
     const projectId = props.location.state.id;
     const currentCourse = props.location.state.currentCourse;
-    const handleClick = (event) => {
+    const profileObjects = props.profileObjects;
+    const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(event.target.name)
+        console.log(event.target)
     }
-    
+    const handleChange = (event) => {
+        console.log(event.target.value)
+    }
+    const pathname = ""
+    //console.log(props.currentUser.uid)
     return (
         <div className = "container">
             <div className = "row mt-3" style = {{fontSize: "1.1rem"}}>
@@ -17,14 +25,8 @@ const IndiProjectDetail = (props) => {
                 <div className = "col-2">Course: </div>
                 <div className = "col-3" style = {{fontWeight: "bold"}}>{currentCourse.title}</div>
             </div>
-            <div className = "row mt-5">
-                <div className = "col-5" style = {{fontSize: "1.8rem", fontWeight: "bold"}}>
-                    {project.title}
-                </div>
-                <div className = "col-4"></div>
-                <div className = "col-3">
-                <button name = {projectId} onClick = {handleClick} className = "btn btn-primary">Start</button>
-                </div>
+            <div className = "row mt-5" style = {{fontSize: "1.8rem", fontWeight: "bold"}}>
+                {project.title}
             </div>
 
             <div className = "row mt-3" style = {{fontSize: "1.1rem"}}>
@@ -48,7 +50,13 @@ const IndiProjectDetail = (props) => {
             </div>
 
             <div className = "row mt-5" style = {{fontSize: "1.1rem"}}>
-                <button className = "btn btn-primary">More on my work</button>
+                <form onSubmit = {handleSubmit}>
+                <div class="mb-3">
+                    <label htmlFor="exampleInputEmail1" class="form-label">Submit File</label>
+                    <input name = "file" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange = {handleChange} />
+                    <button type="submit" className="mt-3 btn btn-primary">Submit</button>
+                </div>
+                </form>
             </div>
             
         </div>
