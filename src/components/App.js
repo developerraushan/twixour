@@ -24,7 +24,8 @@ import AddProject from './projects/AddProject';
 import AddStudentForProject from './projects/AddStudentForProject';
 import DetailProject from './projects/DetailProject';
 import LoginChecker from './LoginCheker';
-import MyProjects from './projects/MyProjects';
+import MyProjects from './projects/IndividualProject/MyProjects';
+import IndiProjectDetail from './projects/IndividualProject/IndiProjectDetail';
 
 const App = () => {
   // current user
@@ -84,21 +85,23 @@ projectsURL.on('value', snapshot => {
 
           <LoginChecker exact path= "/my-projects" projectObjects = {projectObjects} coursesObjects = {coursesObjects} component = {MyProjects} />
 
-          <PrivateRoute  path= "/update-credentials" component = {UpdateCredentials} />
+          <LoginChecker  path= "/update-credentials" component = {UpdateCredentials} />
           <MyRouter path = "/signup" component = {Signup} />
           <MyRouter path = "/login" component = {Login} />
           <MyRouter path = "/forgot-password" component = {ForgotPassword} />
-          <PrivateRoute path = "/create-profile" coursesObjects = {coursesObjects} hello = {"hello"} component = {CreateProfile} />
-          <PrivateRoute path = "/update-profile" coursesObjects = {coursesObjects} component = {UpdateProfile} />
-          <PrivateRoute path = "/profile" component = {Profile} />
-          <PrivateRoute exact path = "/courses" component = {Courses} />
-          <PrivateRoute path = "/add-course" component = {AddCourse} />
-          <PrivateRoute path = "/courses/:pathPram1" component = {DetailCourse} />
-          <PrivateRoute path = "/course/add-students" component = {AddStudents} />
-          <PrivateRoute exact path = "/projects" coursesObjects = {coursesObjects} component = {Projects} />
-          <PrivateRoute path='/projects/add-project' coursesObjects = {coursesObjects} component = {AddProject} />
-          <PrivateRoute path = "/projects/:pathPram1" component = {DetailProject} />
-          <PrivateRoute path = "/project/add-students" component = {AddStudentForProject} />
+          <LoginChecker path = "/create-profile" coursesObjects = {coursesObjects} hello = {"hello"} component = {CreateProfile} />
+          <LoginChecker path = "/update-profile" coursesObjects = {coursesObjects} component = {UpdateProfile} />
+          <LoginChecker path = "/profile" component = {Profile} />
+          <LoginChecker exact path = "/courses" component = {Courses} />
+          <LoginChecker path = "/add-course" component = {AddCourse} />
+          <LoginChecker path = "/courses/:pathPram1" component = {DetailCourse} />
+          <LoginChecker path = "/course/add-students" component = {AddStudents} />
+          <LoginChecker exact path = "/projects" coursesObjects = {coursesObjects} component = {Projects} />
+          <LoginChecker path='/projects/add-project' coursesObjects = {coursesObjects} component = {AddProject} />
+          <LoginChecker path = "/projects/:pathPram1" component = {DetailProject} />
+          <LoginChecker path = "/project/add-students" component = {AddStudentForProject} />
+
+          <LoginChecker path = "/:pathPram1/:pathPram2/:pathPram3" component = {IndiProjectDetail} />
       </Switch>
     </Router>
     </AuthProvider>

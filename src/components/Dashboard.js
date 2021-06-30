@@ -13,14 +13,13 @@ const Dashboard = (props) => {
     const projectObjects = props.projectObjects;
     const arrayProjectObjects = Object.values(projectObjects)
     // const studentAssignment = 
-    //console.log("profiel" ,profileObjects.course)
+    
     let projects = []
     
     if(projectObjects) {
-        projects = (arrayProjectObjects.filter(project => project.course === profileObjects.course))
+        projects = (arrayProjectObjects.filter(project => project.course == profileObjects.course))
     }
-    //console.log(projects)
-
+    
     // useEffect(()=>{
     //     setProfileObjects(props.profileObjects)
     // },props.profileObject)
@@ -29,7 +28,7 @@ const Dashboard = (props) => {
     //     setCoursesObjects(props.coursesObjects)
     // },props.profileObject)
 
-    //console.log(projectObjects);
+    
     return (
         <div className = "container">
         <div className = "row">

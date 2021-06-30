@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { database } from '../../firebase/firebase';
 import { useHistory } from 'react-router';
 
 const AddCourse = (props) => {
     const history = useHistory();
+    const topicsRef = useRef();
     const [inidvidualCourse, setindividualCourses] = useState(
         {
             title: '',
@@ -37,6 +38,7 @@ const AddCourse = (props) => {
                 
             });
             history.push("/courses");
+            //console.log(topicsRef.current.value);
         } catch {
             setError("Couldn't create User Profile")
         }
@@ -70,6 +72,20 @@ const AddCourse = (props) => {
                 <div className = "mb-3" id = "cost">
                     <label className = "form-label"> cost </label>
                     <input name = "cost" className="form-control"  type = "text"  required onChange = {handleChange} />
+                </div>
+
+                <div className = "mb-3" id = "topic">
+                    <label className = "form-label"> Topic </label>
+                    <select multiple name = "tag" className = "form-select" ref = {topicsRef} aria-label = "multiple select example" required >
+                        
+                        <option  value = "Scratch">Scratch</option>
+                        <option value = "Figma">Figma</option>
+                        <option value = "Html">Html</option>
+                        <option value = "CSS">CSS</option>
+                        <option value = "Bootstrap">Bootstrap</option>
+                        <option value = "Python">Python</option>
+                        <option value = "Django">Django</option>
+                    </select>
                 </div>
 
                 <button disabled = {loading} className = "btn btn-primary mt-3 w-100" type = "submit">Create Course</button>
