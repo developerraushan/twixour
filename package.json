@@ -2,7 +2,6 @@
   "name": "twixour",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://firebasestorage.googleapis.com/v0/b/twixour-f6470.appspot.com",
   "dependencies": {
     "@capacitor/android": "3.0.2",
     "@capacitor/cli": "^3.0.2",
