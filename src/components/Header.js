@@ -16,8 +16,9 @@ const Header = () => {
             setError('Failed to log out');
         }
     }
+    
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-danger" role = "navigation">
         {error && <div className="alert alert-danger">{error}</div>}
             <div className="container-fluid">
                 <Link to ="/" style={{ textDecoration: 'none' }}>
@@ -70,6 +71,8 @@ const Header = () => {
                     </ul>
                 </div>
             </div>
+           
+            
         </nav>
     )
 }

@@ -22,6 +22,7 @@ const IndiProject = (props) => {
                  {project.dateAnnounced} 
                 </span>
                 
+                
         </div>
         <div className = "row mt-3">
         <Link to = {{

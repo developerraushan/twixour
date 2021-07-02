@@ -1,9 +1,19 @@
 import React, { useState, useRef } from 'react'
 import { database } from '../../firebase/firebase';
 import { useHistory } from 'react-router';
+import Select from 'react-select'
 
 const AddCourse = (props) => {
     const history = useHistory();
+    const options = [
+        { value: 'Scratch', label: 'Scratch' },
+        { value: 'Figma', label: 'Figma' },
+        { value: 'Html', label: 'Html' },
+        { value: 'CSS', label: 'CSS' },
+        { value: 'Bootstrap', label: 'Bootstrap' },
+        { value: 'Python', label: 'Python' },
+        { value: 'Django', label: 'Django' }
+      ]
     const topicsRef = useRef();
     const [inidvidualCourse, setindividualCourses] = useState(
         {
@@ -13,6 +23,7 @@ const AddCourse = (props) => {
             endDate: '',
             cost: '',
             students: [],
+            tag: [],
         }
     );
     const [loading, setLoading] = useState(false);
@@ -22,6 +33,12 @@ const AddCourse = (props) => {
         const {name, value} = event.target
         setindividualCourses(inidvidualCourse => ({...inidvidualCourse, [name]: value}))
         
+        
+    }
+    const handleSelectChange = (event) => {
+        const getValue = (Array.isArray(event)? event.map(x => x.label):[]);
+        console.log(getValue);
+        setindividualCourses(inidvidualCourse => ({...inidvidualCourse, tag: getValue}))
     }
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -35,6 +52,7 @@ const AddCourse = (props) => {
                 endDate: inidvidualCourse.endDate ,
                 cost: inidvidualCourse.cost,
                 students: inidvidualCourse.students,
+                tag: inidvidualCourse.tag,
                 
             });
             history.push("/courses");
@@ -44,7 +62,7 @@ const AddCourse = (props) => {
         }
         setLoading(false);    
     }
-    
+    console.log("course prints new", inidvidualCourse);
     return (
         <div className = "container mt-3">
         {error && <div className = "alert alert-danger">{error}</div>}
@@ -76,7 +94,8 @@ const AddCourse = (props) => {
 
                 <div className = "mb-3" id = "topic">
                     <label className = "form-label"> Topic </label>
-                    <select multiple name = "tag" className = "form-select" ref = {topicsRef} aria-label = "multiple select example" required >
+                    <Select  isMulti options={options} onChange = {handleSelectChange} />
+                    {/* <select multiple name = "tag" className = "form-select" ref = {topicsRef} aria-label = "multiple select example" required >
                         
                         <option  value = "Scratch">Scratch</option>
                         <option value = "Figma">Figma</option>
@@ -85,7 +104,7 @@ const AddCourse = (props) => {
                         <option value = "Bootstrap">Bootstrap</option>
                         <option value = "Python">Python</option>
                         <option value = "Django">Django</option>
-                    </select>
+                    </select> */}
                 </div>
 
                 <button disabled = {loading} className = "btn btn-primary mt-3 w-100" type = "submit">Create Course</button>
