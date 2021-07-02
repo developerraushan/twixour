@@ -29,7 +29,7 @@ const Login = () => {
    
     return (
         <div className = "container mx-auto d-block" style = {{marginTop: "80px"}}>
-            <img src = {logo} alt = "Image" className = "mx-auto d-block" width = "100%" height = "100%" />
+            <img src = {logo} alt = "loginimg" className = "mx-auto d-block" width = "100%" height = "100%" />
             <div style = {{marginTop: "30px"}}></div>
             <div className = "card mt-5" style = {{border: "2px solid #e82856",fontSize: "32px", marginTop: "20px"}}>
                 <div className = "card-body">

@@ -55,7 +55,7 @@ const DetailProject = (props) => {
                         id: id
                     }
                 }} style = {{ textDecoration: 'none'}}>
-                <span className = "btn btn-primary">Add Students to this Project</span>
+                <span className = "btn btn-danger">Add Students to this Project</span>
                 </Link>
             </div>
             { project &&

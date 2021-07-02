@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useAuth } from '../../../context/AuthContext';
-import { Link } from 'react-router-dom';
+
 import IndiProject from './IndiProject';
 
 const MyProjects = (props) => {
@@ -11,11 +11,11 @@ const MyProjects = (props) => {
     //const currentCourse = coursesObjects[profileObjects.course]
     const currentCourse = (coursesObjects[profileObjects.course]);
     const { currentUser } = useAuth();
-    const [btnDisabled, setBtnDisabled] = useState(false)
+    //const [btnDisabled, setBtnDisabled] = useState(false)
     let logo = require('../../../assets/Images/my_projects.png').default;
     const projectObjects = props.projectObjects;
-    const projectKeys = Object.keys(projectObjects);
-    const arrayProjectObjects = Object.values(projectObjects)
+    //const projectKeys = Object.keys(projectObjects);
+    //const arrayProjectObjects = Object.values(projectObjects)
     const [filteredProjects, setFilteredProjects] = useState('');
   
     //console.log(projects)
@@ -44,7 +44,7 @@ const MyProjects = (props) => {
     }
 
     const handleTagClick = (event) => {
-        console.log(event.target.name);
+        //console.log(event.target.name);
         //setFilteredProjects(projects);
         const values = (Object.filter(projects, project => project.tag === event.target.name))
         setFilteredProjects(values);
@@ -56,12 +56,12 @@ const MyProjects = (props) => {
     if(filteredProjects) {
         filteredProjectsKeys = Object.keys(filteredProjects);
     }
-    console.log(filteredProjects)
+    //console.log(filteredProjects)
     
    
     
     // let filtered = Object.filter(projectObjects, projectObject => projectObject.course === profileObjects.course)
-    console.log();
+    //console.log();
     return (
         <div className = "container">
         <div className = "row mt-5">

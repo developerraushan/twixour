@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { database } from '../../firebase/firebase';
 import { useHistory } from 'react-router';
 import Select from 'react-select'
@@ -14,7 +14,7 @@ const AddCourse = (props) => {
         { value: 'Python', label: 'Python' },
         { value: 'Django', label: 'Django' }
       ]
-    const topicsRef = useRef();
+    //const topicsRef = useRef();
     const [inidvidualCourse, setindividualCourses] = useState(
         {
             title: '',
@@ -107,7 +107,7 @@ const AddCourse = (props) => {
                     </select> */}
                 </div>
 
-                <button disabled = {loading} className = "btn btn-primary mt-3 w-100" type = "submit">Create Course</button>
+                <button disabled = {loading} className = "btn btn-danger mt-3 w-100" type = "submit">Create Course</button>
             </form>
         </div>
     )

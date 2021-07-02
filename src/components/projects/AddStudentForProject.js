@@ -85,7 +85,7 @@ const AddStudentForProject = (props) => {
         </div> 
         : "Students don't exist"} */}
         
-            <button disabled = {loading} className = "btn btn-primary mt-3" type = "submit">Add</button>
+            <button disabled = {loading} className = "btn btn-danger mt-3" type = "submit">Add</button>
         </form>
         </div>
     )

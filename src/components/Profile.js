@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { database } from '../firebase/firebase';
+import React from 'react';
+
 import Progress from '../helper_component/Progress';
 import Expire from '../helper_component/Expire';
 import MakeVisible from '../helper_component/MakeVisible';
@@ -8,11 +7,11 @@ import MakeVisible from '../helper_component/MakeVisible';
 const Profile = (props) => {
     //const [profileObjects, setProfileObjects] = useState('');
     const profileObjects = props.profileObjects;
-    const usersRef = database.ref(`users`);
+    //const usersRef = database.ref(`users`);
     const coursesObjects = props.coursesObjects;
     
-    const { currentUser } = useAuth();
-    const profileURL = usersRef.child(currentUser.uid).child(`profile`);
+    //const { currentUser } = useAuth();
+    //const profileURL = usersRef.child(currentUser.uid).child(`profile`);
     // useEffect(()=>{
     //     profileURL.on('value', snapshot => {
     //         if(snapshot.val() != null) {

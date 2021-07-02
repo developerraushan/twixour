@@ -102,9 +102,10 @@ const IndiProjectDetail = (props) => {
     return (
         <div className = "container">
             <div className = "row mt-3" style = {{fontWeight: "bold" ,fontSize: "1.8rem", color: "#dc3546"}}>
-                <div className = "col-9"></div>
+                <div className = "col-8"></div>
                 
-                <div className = "col-3">&nbsp;&nbsp;{currentCourse.title}</div>
+                <div className = "col-3">{currentCourse.title}</div>
+                <div className = "col-1"></div>
             </div>
             <div className = "row mt-5" >
                <h2 style = {{fontSize: "1.9rem", fontWeight: "bold"}}> {project.title} <span className = "badge rounded-pill bg-danger">{project.tag}</span></h2>
@@ -144,7 +145,7 @@ const IndiProjectDetail = (props) => {
                     {disabledStatus && <Progress  completed = {progressValue} bgColor = '#6a1b9a' />}
                     <label htmlFor="exampleInputEmail1" className="form-label">Submit File</label>
                     <input name = "file" type="file" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange = {handleChange} required />
-                    <button disabled = {disabledStatus} onClick = {handleSubmit} className="mt-3 btn btn-primary">Submit</button>
+                    <button disabled = {disabledStatus} onClick = {handleSubmit} className="mt-3 btn btn-danger">Submit</button>
                     
                     
                     

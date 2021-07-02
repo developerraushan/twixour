@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { database } from '../../firebase/firebase';
 import { useAuth } from '../../context/AuthContext';
 import { useHistory } from 'react-router-dom';
@@ -54,7 +54,7 @@ const CreateProfile = (props) => {
         }
         setLoading(false);
     }
-    const course1 = courses[0]
+    //const course1 = courses[0]
     console.log("create profile first time",coursesObjects[courses[2]].title);
     return (
         <> 

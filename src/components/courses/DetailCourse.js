@@ -51,7 +51,7 @@ const DetailCourse = (props) => {
                         id: id
                     }
                 }} style = {{ textDecoration: 'none'}}>
-                <span className = "btn btn-primary">Add Students to this course</span>
+                <span className = "btn btn-danger">Add Students to this course</span>
                 </Link>
             </div>
             { course &&

@@ -24,7 +24,7 @@ const Courses = () => {
     return (
         <div className = "container mt-3">
             <Link to = "/add-course" style = {{ textDecoration: 'none' }}>
-            <span className = "btn btn-primary">Add Course</span>
+            <span className = "btn btn-danger">Add Course</span>
             </Link>
 
             {courses.map(id => {

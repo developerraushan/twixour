@@ -25,7 +25,7 @@ const Projects = (props) => {
     return (
         <div className = "container mt-3">
             <Link to = "/projects/add-project" style = {{ textDecoration: 'none' }}>
-            <span className = "btn btn-primary">Add Project</span>
+            <span className = "btn btn-danger">Add Project</span>
             </Link>
 
              {projects.map(id => {
