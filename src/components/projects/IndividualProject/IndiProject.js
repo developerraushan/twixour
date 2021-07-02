@@ -16,7 +16,7 @@ const IndiProject = (props) => {
     return (
         <div className = "container">
         <div className = "row mt-4">
-            <span>Title: {project.title}</span>
+            <h4>Title: {project.title} <span className ="badge rounded-pill bg-danger">{project.tag}</span> </h4>
             
                 <span>Date Announced: 
                  {project.dateAnnounced} 

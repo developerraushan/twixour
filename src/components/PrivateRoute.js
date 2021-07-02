@@ -10,6 +10,7 @@ const PrivateRoute = ({ component: Component, projectObjects : projectObjects, c
     const [profileObjects, setProfileObjects] = useState('');
     const usersRef = database.ref(`users`);
     const profileURL = usersRef.child(currentUser.uid).child(`profile`);
+    
 
     useEffect(()=>{
         profileURL.on('value', snapshot => {
@@ -26,7 +27,7 @@ const PrivateRoute = ({ component: Component, projectObjects : projectObjects, c
         <>
         <Header />
             <Route {...rest} render = {props => {
-            return  <Component projectObjects = {projectObjects} profileObjects = {profileObjects} currentUser = {currentUser} coursesObjects = {coursesObjects} {...props} {...rest}  /> 
+            return  <Component projectObjects = {projectObjects} profileObjects = {profileObjects}  currentUser = {currentUser} coursesObjects = {coursesObjects} {...props} {...rest}  /> 
         }}></Route>
         </>
     )

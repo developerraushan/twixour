@@ -8,14 +8,14 @@ const LoginChecker = ({ component: Component, projectObjects: projectObjects, co
   
 
     return (
-        <>
+        <div style = {{marginBottom: "30px"}}>
             <Route>
                 {currentUser ? <PrivateRoute projectObjects = {projectObjects} component = {Component} coursesObjects = {coursesObjects} /> : <Redirect to = "/login" />}
             </Route>
             {/* <Route {...rest} render = {props => {
                 return currentUser ? <PrivateRoute  Component = {Component} {...props} {...rest} coursesObjects = {coursesObjects}  /> : <Redirect to = "/login" />
         }}></Route> */}
-        </>
+        </div>
     )
 }
 

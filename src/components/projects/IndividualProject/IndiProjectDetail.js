@@ -101,13 +101,13 @@ const IndiProjectDetail = (props) => {
     // }
     return (
         <div className = "container">
-            <div className = "row mt-3" style = {{fontSize: "1.1rem"}}>
-                <div className = "col-7"></div>
-                <div className = "col-2">Course: </div>
-                <div className = "col-3" style = {{fontWeight: "bold"}}>{currentCourse.title}</div>
+            <div className = "row mt-3" style = {{fontWeight: "bold" ,fontSize: "1.8rem", color: "#dc3546"}}>
+                <div className = "col-9"></div>
+                
+                <div className = "col-3">&nbsp;&nbsp;{currentCourse.title}</div>
             </div>
-            <div className = "row mt-5" style = {{fontSize: "1.8rem", fontWeight: "bold"}}>
-                {project.title}
+            <div className = "row mt-5" >
+               <h2 style = {{fontSize: "1.9rem", fontWeight: "bold"}}> {project.title} <span className = "badge rounded-pill bg-danger">{project.tag}</span></h2>
             </div>
 
             <div className = "row mt-3" style = {{fontSize: "1.1rem"}}>

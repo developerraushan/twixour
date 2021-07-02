@@ -26,6 +26,7 @@ import DetailProject from './projects/DetailProject';
 import LoginChecker from './LoginCheker';
 import MyProjects from './projects/IndividualProject/MyProjects';
 import IndiProjectDetail from './projects/IndividualProject/IndiProjectDetail';
+import Fees from './fee/Fees';
 
 const App = () => {
   // current user
@@ -91,7 +92,7 @@ projectsURL.on('value', snapshot => {
           <MyRouter path = "/forgot-password" component = {ForgotPassword} />
           <LoginChecker path = "/create-profile" coursesObjects = {coursesObjects} hello = {"hello"} component = {CreateProfile} />
           <LoginChecker path = "/update-profile" coursesObjects = {coursesObjects} component = {UpdateProfile} />
-          <LoginChecker path = "/profile" component = {Profile} />
+          <LoginChecker path = "/profile" projectObjects = {projectObjects} coursesObjects = {coursesObjects} component = {Profile} />
           <LoginChecker exact path = "/courses" component = {Courses} />
           <LoginChecker path = "/add-course" component = {AddCourse} />
           <LoginChecker path = "/courses/:pathPram1" component = {DetailCourse} />
@@ -102,6 +103,8 @@ projectsURL.on('value', snapshot => {
           <LoginChecker path = "/project/add-students" component = {AddStudentForProject} />
 
           <LoginChecker path = "/:pathPram1/:pathPram2/:pathPram3" projectObjects = {projectObjects} coursesObjects = {coursesObjects} component = {IndiProjectDetail} />
+
+          <LoginChecker path = "/payment" projectObjects = {projectObjects} coursesObjects = {coursesObjects} component = {Fees} />
       </Switch>
     </Router>
     </AuthProvider>

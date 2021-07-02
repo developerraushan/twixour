@@ -5,23 +5,29 @@ import Progress from '../helper_component/Progress';
 import Expire from '../helper_component/Expire';
 import MakeVisible from '../helper_component/MakeVisible';
 
-const Profile = () => {
-    const [profileObjects, setProfileObjects] = useState('');
-    
+const Profile = (props) => {
+    //const [profileObjects, setProfileObjects] = useState('');
+    const profileObjects = props.profileObjects;
     const usersRef = database.ref(`users`);
+    const coursesObjects = props.coursesObjects;
     
     const { currentUser } = useAuth();
     const profileURL = usersRef.child(currentUser.uid).child(`profile`);
-    useEffect(()=>{
-        profileURL.on('value', snapshot => {
-            if(snapshot.val() != null) {
-                setProfileObjects({
-                    ...snapshot.val()
-                })
+    // useEffect(()=>{
+    //     profileURL.on('value', snapshot => {
+    //         if(snapshot.val() != null) {
+    //             setProfileObjects({
+    //                 ...snapshot.val()
+    //             })
                 
-            }
-        })
-    },[])
+    //         }
+    //     })
+    // },[])
+    let courseTitle = ''
+    if(coursesObjects) {
+        courseTitle = coursesObjects[profileObjects.course].title
+    }
+    
     
     return (
         <div className = "container mt-3">
@@ -46,7 +52,7 @@ const Profile = () => {
 
                             <div className = "mb-3" id = "course">
                                 <label className = "form-label">Course Enrolled</label>
-                                <input className="form-control"  type = "text" disabled value = {profileObjects && profileObjects.course}/>
+                                <input className="form-control"  type = "text" disabled value = {profileObjects && courseTitle} />
                             </div>
 
                             <div className = "mb-3" id = "gender">
