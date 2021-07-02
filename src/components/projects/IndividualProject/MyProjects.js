@@ -18,14 +18,6 @@ const MyProjects = (props) => {
     const arrayProjectObjects = Object.values(projectObjects)
     const [filteredProjects, setFilteredProjects] = useState('');
   
-    let projects = []
-    
-    if(projectObjects) {
-        projects = (arrayProjectObjects.filter(project => project.course === profileObjects.course))
-        
-        
-    }
-    
     //console.log(projects)
 
     // useEffect(()=>{
@@ -38,15 +30,25 @@ const MyProjects = (props) => {
    
 
     //console.log(projectObjects);
-    const handleClickStart = (event) => {
-        event.preventDefault();
-        setBtnDisabled(true)
+    
+    Object.filter = (obj, predicate) => 
+    Object.keys(obj)
+          .filter( key => predicate(obj[key]) )
+          .reduce( (res, key) => (res[key] = obj[key], res), {} );
+
+
+    let projects = []
+    
+    if(projectObjects) {
+        projects = Object.filter(projectObjects, projectObject => projectObject.course === profileObjects.course)
     }
+
     const handleTagClick = (event) => {
         console.log(event.target.name);
         //setFilteredProjects(projects);
-        const values = (projects.filter(project => project.tag === event.target.name))
+        const values = (Object.filter(projects, project => project.tag === event.target.name))
         setFilteredProjects(values);
+       
        
     }
     let filteredProjectsKeys = []
@@ -54,6 +56,12 @@ const MyProjects = (props) => {
     if(filteredProjects) {
         filteredProjectsKeys = Object.keys(filteredProjects);
     }
+    console.log(filteredProjects)
+    
+   
+    
+    // let filtered = Object.filter(projectObjects, projectObject => projectObject.course === profileObjects.course)
+    console.log();
     return (
         <div className = "container">
         <div className = "row mt-5">
@@ -75,7 +83,7 @@ const MyProjects = (props) => {
         {currentCourse && <>
          
                 {currentCourse.tag.map((tag,index) => {
-                    return <div className = "mt-2" style={{marginLeft: "-8px"}}><button key = {index} name = {tag} onClick = {handleTagClick} type="button" className="btn btn-secondary">{tag}</button> <br /> </div>
+                    return <button key = {index} name = {tag} onClick = {handleTagClick} type="button" className="btn btn-secondary">{tag}</button> 
                 })}
             </>}
             {/* <button type="button" className="btn btn-secondary">Scratch</button>

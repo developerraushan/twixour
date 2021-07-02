@@ -11,7 +11,7 @@ const IndiProject = (props) => {
     const currentUser = props.currentUser;
     const profileObjects = props.profileObjects
     const currentCourse = props.currentCourse;
-    
+    console.log("welcome to id", id);
     const pathname ="/" + currentCourse.title + "/" + profileObjects.first_name +  "/" + project.title  
     return (
         <div className = "container">
