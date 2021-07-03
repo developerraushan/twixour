@@ -136,7 +136,7 @@ const AllFees = (props) => {
                                             feesList: feesList,
                                         }
                                         }  
-                                    }>
+                                    } style = {{textDecoration: "none"}}>
                                         {usersList && usersList[filteredFees[key].user].profile.first_name + ' ' + usersList[filteredFees[key].user].profile.last_name }
                                     </Link>
 
