@@ -60,7 +60,7 @@ const Header = () => {
 
                         
                         
-                        {currentUser.uid === "ou5ysvaWpJfEbVZJbjOrnb2g6qv2" &&
+                        {currentUser.email === "admindev@gmail.com" &&
                             <li className="nav-item">
                                 <Link to = "/all-payment" style={{ textDecoration: 'none' }}>
                                 <span className="nav-link" href="#" style = {{fontSize: "1.2rem"}}> <b>Payment</b> </span>

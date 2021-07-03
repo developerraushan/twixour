@@ -11,6 +11,7 @@ const AllFees = (props) => {
     const [usersList, setUsersList] = useState('');
     const [monthNumber, setMonthNumeber] = useState('');
     const [filteredFees, setFilteredFees] = useState([]);
+    const [revenueAmount, setRevenueAmount] = useState(0);
     const monthOptions = [
         {value: '1' , label: 'January'},
         {value: '2' , label: 'February'},
@@ -73,6 +74,15 @@ const AllFees = (props) => {
         
     }
     const filteredFeesKeys = Object.keys(filteredFees);
+    const feesKeys = Object.keys(feesList)
+    useEffect(() =>{
+        let total = 0;
+        if(feesList) {
+            feesKeys.map(key => { total = total + parseInt(feesList[key].paidAmount, 10)})
+            setRevenueAmount(total)
+        }
+        
+    },[feesList])
     
     return (
         <div className = "container">
@@ -81,6 +91,11 @@ const AllFees = (props) => {
                <h1><Link to = "/payment/pay-fee">
                <span className = "badge rounded-pill bg-danger">Pay Now</span>
                </Link></h1>
+           </div>
+           <div className="container mt-3" style = {{fontSize: "1.5rem", fontWeight: "bold"}}>
+               <div className="alert alert-danger">
+                   Total Revenue generated: &#8377; {revenueAmount} (Overall)
+               </div>
            </div>
             <div className = "row mt-3">
                 <div className = "row" style = {{fontWeight: "bold"}}> Month Selector</div>
@@ -111,7 +126,24 @@ const AllFees = (props) => {
                    <tbody>
                         {filteredFeesKeys.map(key => {
                             return <tr key = {key}>
-                                <td>{usersList && usersList[filteredFees[key].user].profile.first_name + ' ' + usersList[filteredFees[key].user].profile.last_name }</td>
+                                <td>
+                                    {feesList ? 
+                                        
+                                        <Link to = {{
+                                        pathname: "/payment/detail-list", 
+                                        state: {
+                                            user: usersList[filteredFees[key].user],
+                                            feesList: feesList,
+                                        }
+                                        }  
+                                    }>
+                                        {usersList && usersList[filteredFees[key].user].profile.first_name + ' ' + usersList[filteredFees[key].user].profile.last_name }
+                                    </Link>
+
+                                    : ""
+
+                                    }
+                                </td>
                                 <td>{coursesObjects && coursesObjects[filteredFees[key].course].title}</td>
                                 <td>{filteredFees[key].paymentDate}</td>
                                 <td>&#8377; {filteredFees[key].paidAmount}</td>

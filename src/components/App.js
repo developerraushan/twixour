@@ -30,6 +30,7 @@ import AllFees from './fee/admin/AllFees';
 import PayFee from './fee/admin/PayFee';
 import PaymentList from './fee/students/PaymentList';
 import PaymentSlip from './fee/students/PaymentSlip';
+import DetalListFee from './fee/admin/DetalListFee';
 
 const App = () => {
   // current user
@@ -112,6 +113,8 @@ projectsURL.on('value', snapshot => {
 
           <LoginChecker path = "/fee" projectObjects = {projectObjects} coursesObjects = {coursesObjects} component = {PaymentList} />
           <LoginChecker path = "/fee-detail" projectObjects = {projectObjects} coursesObjects = {coursesObjects} component = {PaymentSlip} />
+
+          <LoginChecker path = "/payment/detail-list" projectObjects = {projectObjects} coursesObjects = {coursesObjects} component = {DetalListFee} />
       </Switch>
     </Router>
     </AuthProvider>
