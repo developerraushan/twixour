@@ -18,7 +18,7 @@ const Header = () => {
     }
     
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-danger" role = "navigation">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-danger fixed-top" role = "navigation">
         {error && <div className="alert alert-danger">{error}</div>}
             <div className="container-fluid">
                 <Link to ="/" style={{ textDecoration: 'none' }}>
