@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { database } from '../../firebase/firebase';
 import { useAuth } from '../../context/AuthContext';
 import { useHistory } from 'react-router-dom';
+import Select from 'react-select';
 
 const CreateProfile = (props) => {
     
@@ -11,7 +12,15 @@ const CreateProfile = (props) => {
     const coursesObjects = props.coursesObjects;
     const courses = Object.keys(coursesObjects);
     const history = useHistory();
-
+    const [courseFee, setCourseFee] = useState('');
+    const feeModeOptions = [
+        {value: "10000", label: "10000 UC"},
+        {value: "11000", label: "11000 UC"},
+        {value: "12000", label: "12000 UC"},
+        {value: "5000", label: "5000 PD"},
+        {value: "4500", label: "4500 PD"},
+        {value: "8800", label: "8800 OG"}
+    ];
     const firstNameRef = useRef();
     const lastNameRef = useRef();
     const photoURLRef = useRef();
@@ -46,7 +55,8 @@ const CreateProfile = (props) => {
                 state: stateRef.current.value,
                 country: countryRef.current.value,
                 email: currentUser.email,
-                course: courseAppliedRef.current.value
+                course: courseAppliedRef.current.value,
+                courseFee: courseFee,
             });
             history.push("/");
         } catch {
@@ -55,7 +65,11 @@ const CreateProfile = (props) => {
         setLoading(false);
     }
     //const course1 = courses[0]
-    console.log("create profile first time",coursesObjects[courses[2]].title);
+    // console.log("create profile first time",coursesObjects[courses[2]].title);
+    const handleSelectPayChange = (event) => {
+        const getValue = event.value;
+        setCourseFee(getValue);
+    }
     return (
         <> 
             <div className="card">
@@ -71,6 +85,12 @@ const CreateProfile = (props) => {
                         <div className = "mb-3" id = "last_name">
                             <label className = "form-label">Last Name </label>
                             <input className="form-control" type = "text" ref = {lastNameRef} required   />
+                        </div>
+
+                    
+                        <div className = "mb-3" id = "courseFeePayOption">
+                            <label className = "form-label">Course Fee Pay Option</label>
+                            <Select options = {feeModeOptions} onChange = {handleSelectPayChange} />
                         </div>
 
                         <div className = "mb-3" id = "profile-photo">

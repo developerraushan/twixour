@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Progress from '../../helper_component/Progress';
 import Expire from '../../helper_component/Expire';
 import MakeVisible from '../../helper_component/MakeVisible';
+import Select from 'react-select';
 
 const UpdateProfile = (props) => {
     const [profileObjects, setProfileObjects] = useState('');
@@ -17,6 +18,23 @@ const UpdateProfile = (props) => {
     const coursesObjects = props.coursesObjects;
     const courses = Object.keys(coursesObjects);
     const history = useHistory();
+
+    const [courseFee, setCourseFee] = useState('');
+    let dValue = {value: "", label: ""}
+    if(profileObjects) {
+        dValue = {value: profileObjects.courseFee, label: profileObjects.courseFee}
+        
+    }
+    
+    const feeModeOptions = [
+        {value: "10000", label: "10000 UC"},
+        {value: "11000", label: "11000 UC"},
+        {value: "12000", label: "12000 UC"},
+        {value: "5000", label: "5000 PD"},
+        {value: "4500", label: "4500 PD"},
+        {value: "8800", label: "8800 OG"}
+    ];
+
     const firstNameRef = useRef();
     const lastNameRef = useRef();
     const photoURLRef = useRef();
@@ -60,7 +78,8 @@ const UpdateProfile = (props) => {
                 pincode: pincodeRef.current.value,
                 state: stateRef.current.value,
                 country: countryRef.current.value,
-                course: courseAppliedRef.current.value
+                course: courseAppliedRef.current.value,
+                courseFee: courseFee,
             });
             history.push("/");
         } catch {
@@ -68,6 +87,11 @@ const UpdateProfile = (props) => {
         }
         setLoading(false);
     }
+    const handleSelectPayChange = (event) => {
+        const getValue = event.value;
+        setCourseFee(getValue);
+    }
+    console.log(dValue)
     return (
         <>         
            {!profileObjects ? 
@@ -89,6 +113,11 @@ const UpdateProfile = (props) => {
                             <div className = "mb-3" id = "last_name">
                                 <label className = "form-label">Last Name </label>
                                 <input className="form-control" type = "text" ref = {lastNameRef} required defaultValue = {profileObjects && profileObjects.last_name}  />
+                            </div>
+
+                            <div className = "mb-3" id = "courseFeePayOption">
+                                <label className = "form-label">Course Fee Pay Option</label>
+                                <Select defaultValue = {dValue} options = {feeModeOptions} onChange = {handleSelectPayChange} />
                             </div>
 
                             <div className = "mb-3" id = "profile-photo">
