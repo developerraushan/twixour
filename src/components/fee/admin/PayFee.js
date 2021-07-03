@@ -3,8 +3,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
 import { date } from 'check-types';
 import Select from 'react-select';
-import { useAuth } from '../../context/AuthContext';
-import { database } from '../../firebase/firebase';
+import { useAuth } from '../../../context/AuthContext';
+import { database } from '../../../firebase/firebase';
 import { useHistory } from 'react-router';
 
 const PayFee = () => {
@@ -48,12 +48,12 @@ const PayFee = () => {
     //console.log("the users list",usersList[usersKeys[1]]);
     const handleSelectChange = (event) => {
         const getValue = event.value;
-        setFee(fee => ({...fee, user: getValue}));
+        setFee(fee => ({...fee, user: getValue, course: usersList[getValue].profile.course}));
         
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-        setFee(fee => ({...fee, course: usersList[fee.user].profile.course, paymentDate: selectedDate}))
+        //setFee(fee => ({...fee,  paymentDate: selectedDate}))
 
         try {
             // setError('');
@@ -67,7 +67,7 @@ const PayFee = () => {
                 
                 
             });
-            history.push("/payment");
+            history.push("/all-payment");
             
         } catch {
             //setError("Couldn't create User Profile")
@@ -101,7 +101,7 @@ const PayFee = () => {
                 </div>
                 <div className = "mb-3" id = "date">
                     <label className = "form-label"> Payment Date </label> <br />
-                    <DatePicker className="form-control" placeholderText = "Select your date" selected = {selectedDate} onChange = {date => setSelectedDate(date)} dateFormat = "dd/MM/yyyy"
+                    <DatePicker className="form-control" placeholderText = "Select your date" selected = {selectedDate} onChange = {date => setFee(fee => ({...fee,  paymentDate: date}))} dateFormat = "dd/MM/yyyy"
                         showYearDropdown
                         scrollableMonthYearDropdown
                      />

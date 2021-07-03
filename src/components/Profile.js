@@ -23,7 +23,7 @@ const Profile = (props) => {
     //     })
     // },[])
     let courseTitle = ''
-    if(coursesObjects) {
+    if(coursesObjects && profileObjects) {
         courseTitle = coursesObjects[profileObjects.course].title
     }
     

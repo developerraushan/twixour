@@ -64,11 +64,11 @@ const Dashboard = (props) => {
             
         </div>
         
-        <div className ="row mt-5" style = {{fontSize: "1.3rem"}}>
+        {/* <div className ="row mt-5" style = {{fontSize: "1.3rem"}}>
             <div className = "alert alert-danger">
             Fee due: &#8377;
             </div> 
-        </div>
+        </div> */}
 
         {/* <div className ="row mt-5" style = {{fontSize: "1.3rem"}}>
             Projects in this course

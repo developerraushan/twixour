@@ -26,8 +26,10 @@ import DetailProject from './projects/DetailProject';
 import LoginChecker from './LoginCheker';
 import MyProjects from './projects/IndividualProject/MyProjects';
 import IndiProjectDetail from './projects/IndividualProject/IndiProjectDetail';
-import Fees from './fee/Fees';
-import PayFee from './fee/PayFee';
+import AllFees from './fee/admin/AllFees';
+import PayFee from './fee/admin/PayFee';
+import PaymentList from './fee/students/PaymentList';
+import PaymentSlip from './fee/students/PaymentSlip';
 
 const App = () => {
   // current user
@@ -105,8 +107,11 @@ projectsURL.on('value', snapshot => {
 
           <LoginChecker path = "/:pathPram1/:pathPram2/:pathPram3" projectObjects = {projectObjects} coursesObjects = {coursesObjects} component = {IndiProjectDetail} />
 
-          <LoginChecker exact path = "/payment" projectObjects = {projectObjects} coursesObjects = {coursesObjects} component = {Fees} />
+          <LoginChecker exact path = "/all-payment" projectObjects = {projectObjects} coursesObjects = {coursesObjects} component = {AllFees} />
           <LoginChecker path = "/payment/pay-fee" projectObjects = {projectObjects} coursesObjects = {coursesObjects} component = {PayFee} />
+
+          <LoginChecker path = "/fee" projectObjects = {projectObjects} coursesObjects = {coursesObjects} component = {PaymentList} />
+          <LoginChecker path = "/fee-detail" projectObjects = {projectObjects} coursesObjects = {coursesObjects} component = {PaymentSlip} />
       </Switch>
     </Router>
     </AuthProvider>

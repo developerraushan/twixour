@@ -25,14 +25,14 @@ const IndiProject = (props) => {
                 
         </div>
         <div className = "row mt-3">
-        <Link to = {{
+        <h1><Link to = {{
                 pathname: pathname,
                 state: {
                     project: project,
                     id: id,
                     currentCourse: currentCourse
                 }
-            }} style = {{marginLeft: "20px", textDecoration: "none"}} ><button className = "btn btn-danger">Start</button></Link>
+            }} style = {{marginLeft: "20px", textDecoration: "none"}} ><button className = "btn btn-danger">Start</button></Link></h1>
         </div>
         </div>
     )

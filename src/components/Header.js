@@ -33,42 +33,70 @@ const Header = () => {
                     {currentUser && 
                         <>
                         <li className="nav-item">
-                            <span className="nav-link" onClick = {handleLogout} style = {{fontSize: "1.2rem"}}><b>Log Out</b></span>
+                            <Link to = "/" style={{ textDecoration: 'none' }}>
+                                <span className="nav-link" href="#" style = {{fontSize: "1.2rem"}}> <b>Home</b> </span>
+                            </Link>
                         </li>
+
+                        <li className = "nav-item"> 
+                            <Link to = "/profile" style={{ textDecoration: 'none' }}>
+                                <span className = "nav-link" style = {{fontSize: "1.2rem"}}><b>Profile</b></span>
+                            </Link>
+                                
+                        </li>
+                        
 
                         <li className="nav-item">
                             <Link to = "/my-projects" style={{ textDecoration: 'none' }}>
                                 <span className="nav-link" href="#" style = {{fontSize: "1.2rem"}}> <b>My Projects</b> </span>
                             </Link>
                         </li>
+
+                        <li className="nav-item">
+                            <Link to = "/fee" style={{ textDecoration: 'none' }}>
+                                <span className="nav-link" href="#" style = {{fontSize: "1.2rem"}}> <b>Fee</b> </span>
+                            </Link>
+                        </li>
+
                         
-                        <li className="nav-item">
-                            <Link to = "/payment" style={{ textDecoration: 'none' }}>
+                        
+                        {currentUser.uid === "ou5ysvaWpJfEbVZJbjOrnb2g6qv2" &&
+                            <li className="nav-item">
+                                <Link to = "/all-payment" style={{ textDecoration: 'none' }}>
                                 <span className="nav-link" href="#" style = {{fontSize: "1.2rem"}}> <b>Payment</b> </span>
-                            </Link>
-                        </li>
+                                </Link>
+                            </li>
+                        }
+                        
+                        {currentUser.uid === "ou5ysvaWpJfEbVZJbjOrnb2g6qv2" &&
+                            <li className="nav-item">
+                                <Link to = "/update-profile" style={{ textDecoration: 'none' }}>
+                                    <span className="nav-link" href="#" style = {{fontSize: "1.2rem"}}><b>Update Profile</b></span>
+                                </Link>
+                            </li>
+                        }
+
+                        {currentUser.uid === "ou5ysvaWpJfEbVZJbjOrnb2g6qv2" &&
+                            <li className = "nav-item">
+                                <Link to = "/courses" style = {{ textDecoration: 'none'}}>
+                                    <span className = "nav-link" style = {{fontSize: "1.2rem"}}><b>Courses</b></span>
+                                </Link>
+                            </li>
+                        }
+
+                        {currentUser.uid === "ou5ysvaWpJfEbVZJbjOrnb2g6qv2" &&
+                            <li className = "nav-item">
+                                <Link to = "/projects" style = {{ textDecoration: 'none'}}>
+                                    <span className = "nav-link" style = {{fontSize: "1.2rem"}}><b>Projects</b></span>
+                                </Link>
+                            </li>
+                        }
+                        
+                        
+                        
 
                         <li className="nav-item">
-                            <Link to = "/update-profile" style={{ textDecoration: 'none' }}>
-                                <span className="nav-link" href="#" style = {{fontSize: "1.2rem"}}><b>Update Profile</b></span>
-                            </Link>
-                        </li>
-                        <li className = "nav-item"> 
-                            <Link to = "/profile" style={{ textDecoration: 'none' }}>
-                                <span className = "nav-link" style = {{fontSize: "1.2rem"}}><b>Profile</b></span>
-                            </Link>
-                                
-                            </li>
-                        <li className = "nav-item">
-                            <Link to = "/courses" style = {{ textDecoration: 'none'}}>
-                                <span className = "nav-link" style = {{fontSize: "1.2rem"}}><b>Courses</b></span>
-                            </Link>
-                        </li>
-
-                        <li className = "nav-item">
-                            <Link to = "/projects" style = {{ textDecoration: 'none'}}>
-                                <span className = "nav-link" style = {{fontSize: "1.2rem"}}><b>Projects</b></span>
-                            </Link>
+                            <span className="nav-link" onClick = {handleLogout} style = {{fontSize: "1.2rem"}}><b>Log Out</b></span>
                         </li>
 
                         </>

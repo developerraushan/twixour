@@ -77,7 +77,7 @@ const MyProjects = (props) => {
 
         <div className = "row mt-3">
         <span style = {{fontWeight: "bold", fontSize: "1.2rem"}}>Click on any of these Topics to display its projects</span> <br />
-            <div className = "col-3" style = {{maxWidth: "90vw"}}>
+            <div className = "col-3 mt-3" style = {{maxWidth: "90vw"}}>
             <div className="btn-group-vertical" role="group" aria-label="Basic example">
             
         {currentCourse && <>
