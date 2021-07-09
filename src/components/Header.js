@@ -67,6 +67,14 @@ const Header = () => {
                                 </Link>
                             </li>
                         }
+
+                        {currentUser.email === "admindev@gmail.com" &&
+                            <li className="nav-item">
+                                <Link to = "/students" style={{ textDecoration: 'none' }}>
+                                <span className="nav-link" href="#" style = {{fontSize: "1.2rem"}}> <b>Students</b> </span>
+                                </Link>
+                            </li>
+                        }
                         
                         {currentUser.uid === "ou5ysvaWpJfEbVZJbjOrnb2g6qv2" &&
                             <li className="nav-item">

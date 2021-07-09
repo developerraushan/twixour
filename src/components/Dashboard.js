@@ -82,7 +82,7 @@ const Dashboard = (props) => {
 
         <div className ="row mt-5" style = {{fontSize: "1.3rem"}}>
             <div className = "alert alert-primary">
-                You have submitted: {studentProjectsSubmitted && studentProjectsSubmittedKeys.length} Projects
+                You have submitted: {studentProjectsSubmitted && studentProjectsSubmittedKeys.length} {studentProjectsSubmitted && studentProjectsSubmittedKeys.length > 1 ? "Projects" : "Project"}
             </div>
             
         </div>

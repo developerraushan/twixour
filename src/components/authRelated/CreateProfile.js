@@ -14,12 +14,14 @@ const CreateProfile = (props) => {
     const history = useHistory();
     const [courseFee, setCourseFee] = useState('');
     const feeModeOptions = [
+        {value: "0", label: "None"},
         {value: "10000", label: "10000 UC"},
         {value: "11000", label: "11000 UC"},
         {value: "12000", label: "12000 UC"},
         {value: "5000", label: "5000 PD"},
         {value: "4500", label: "4500 PD"},
-        {value: "8800", label: "8800 OG"}
+        {value: "8800", label: "8800 OG"},
+        {value: "4000", label: "4000 PD"},
     ];
     const firstNameRef = useRef();
     const lastNameRef = useRef();
@@ -32,6 +34,8 @@ const CreateProfile = (props) => {
     const cityRef = useRef();
     const phoneRef = useRef();
     const courseAppliedRef = useRef();
+    const fatherNameRef = useRef();
+    const motherNameRef = useRef();
 
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -57,6 +61,8 @@ const CreateProfile = (props) => {
                 email: currentUser.email,
                 course: courseAppliedRef.current.value,
                 courseFee: courseFee,
+                fatherName: fatherNameRef.current.value,
+                motherName: motherNameRef.current.value
             });
             history.push("/");
         } catch {
@@ -96,6 +102,16 @@ const CreateProfile = (props) => {
                         <div className = "mb-3" id = "profile-photo">
                             <label className = "form-label">Profile Photo</label>
                             <input className="form-control"  type = "text" ref = {photoURLRef} required />
+                        </div>
+
+                        <div className = "mb-3" id = "father_name">
+                            <label className = "form-label">Father Name </label>
+                            <input className="form-control" type = "text" ref = {fatherNameRef} required   />
+                        </div>
+
+                        <div className = "mb-3" id = "mother_name">
+                            <label className = "form-label">Mother Name </label>
+                            <input className="form-control" type = "text" ref = {motherNameRef} required   />
                         </div>
 
                         <div className = "mb-3" id = "gender">
