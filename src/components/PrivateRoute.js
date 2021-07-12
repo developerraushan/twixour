@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Header from './Header';
 import { database } from '../firebase/firebase';
+import NewHeader from './NewHeader';
 
 const PrivateRoute = ({ component: Component, projectObjects : projectObjects, coursesObjects: coursesObjects, ...rest }) => {
     const { currentUser } = useAuth();
