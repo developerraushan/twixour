@@ -89,7 +89,7 @@ const AllFees = (props) => {
            <h1>All Transactions</h1> 
            <div className = "row mt-3">
                <h1><Link to = "/payment/pay-fee">
-               <span className = "badge rounded-pill bg-danger">Pay Now</span>
+               <span className = "badge rounded-pill " style = {{backgroundColor: "#4723d9", color: "white"}}>Pay Now</span>
                </Link></h1>
            </div>
            <div className="container mt-3" style = {{fontSize: "1.5rem", fontWeight: "bold"}}>
@@ -102,7 +102,7 @@ const AllFees = (props) => {
                 <div className = "row">
                 <div className = "col-10"><Select   options={monthOptions} onChange = {handleSelectChange} /></div>
                 <div className = "col-2">
-                    <button onClick = {handleGoButton} className = "btn btn-danger">Go</button>
+                    <button onClick = {handleGoButton} className = "btn" style = {{backgroundColor: "#4723d9", color: "white"}}>Go</button>
                 </div>
                 
                 </div>

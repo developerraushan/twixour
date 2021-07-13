@@ -97,7 +97,7 @@ const UpdateProfile = (props) => {
            {!profileObjects ? 
            <> Loading... <Progress completed = {0} bgColor = "#6a1b9a"  /> </> : <Expire delay = "900">  <Progress completed = {100} bgColor = "#6a1b9a" />  </Expire>      }
            <MakeVisible delay="2000">
-           <Link to = "/update-credentials" className = "btn btn-danger w-100 mt-5">Update Credential</Link>
+           <Link to = "/update-credentials" className = "btn w-100 mt-5" style = {{backgroundColor: "#4723d9", color: "white"}}>Update Credential</Link>
                 <div className="card mt-5">
                 <img src={profileObjects && profileObjects.photoURL} className="card-img-top" alt="..."  style = {{width: "40%"}} />
                     <div className="card-body">
@@ -173,7 +173,7 @@ const UpdateProfile = (props) => {
                                 <input className="form-control"  type = "text" ref = {countryRef} required defaultValue = {profileObjects && profileObjects.country}/>
                             </div>
 
-                            <button disabled= {loading} type = "submit" className = "btn btn-danger">{!profileObjects ?<> Create Profile </>: <>Update Profile</>}</button>
+                            <button disabled= {loading} type = "submit" className = "btn " style = {{backgroundColor: "#4723d9", color: "white"}}>{!profileObjects ?<> Create Profile </>: <>Update Profile</>}</button>
 
                         </form>
                     </div>

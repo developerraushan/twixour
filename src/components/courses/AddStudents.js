@@ -59,12 +59,13 @@ const AddStudents = (props) => {
    }
     
     return (
-        <div className = "container mt-3">
-        <form onSubmit = {onSubmit}>
-        {error && <div className="alert alert-danger">{error}</div>}
+        <div className = "container mt-5">
+        <form  onSubmit = {onSubmit}>
+            <div className = "row mt-5">
+            {error && <div className="alert alert-danger">{error}</div>}
         {userObjects ? <>
             {usersKeys.map(id => {
-                return <div className = "form-check" key = {id} >
+                return <div className = "form-check mt-3" key = {id} >
                     <input name = {id} onChange = {handleChange} className = "form-check-input" id = {id} type = "checkbox" value = {id} />
                     <label className = "form-check-label" htmlFor = {id}>{userObjects[id].profile.first_name} &nbsp;  {userObjects[id].profile.last_name}</label>
                 </div>
@@ -85,7 +86,8 @@ const AddStudents = (props) => {
         </div> 
         : "Students don't exist"} */}
         
-            <button disabled = {loading} className = "btn btn-danger mt-3" type = "submit">Add</button>
+            <button disabled = {loading} className = "btn mt-3" type = "submit" style = {{backgroundColor: "#4723d9", color: "white"}}>Add</button>
+            </div>
         </form>
         </div>
     )

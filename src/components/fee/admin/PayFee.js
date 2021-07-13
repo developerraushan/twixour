@@ -117,7 +117,7 @@ const PayFee = () => {
         
     }} />
                 </div>
-                <button type = "submit" className = "btn btn-danger btn-lg btn-block" >Pay</button>
+                <button type = "submit" className = "btn btn-lg btn-block" style = {{backgroundColor: "#4723d9", color: "white"}} >Pay</button>
             </form>
             
         </div>

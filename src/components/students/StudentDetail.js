@@ -15,11 +15,11 @@ const StudentDetail = (props) => {
         <div className = "container">
             <div className = "row mt-3">
                 <div className = "col-3 mt-3">
-                <button className = "btn btn-danger" onClick = {handleBack}>&laquo;Back</button>
+                <button className = "btn" onClick = {handleBack} style = {{backgroundColor: "#4723d9", color: "white"}}>&laquo;Back</button>
                 </div>
                 <div className = "col-9"></div>
             </div>
-            <div className = "card" style = {{width: "22rem", margin: "0 auto", float: "none",marginBottom: "10px"}}>
+            <div className = "card mt-5" style = {{width: "22rem", margin: "0 auto", float: "none",marginBottom: "10px"}}>
                 <img src = {profile.photoURL} alt = "..." />
                 <div className = "card-body">
                     <div className = "row mt-3">
