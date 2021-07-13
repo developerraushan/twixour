@@ -10,7 +10,7 @@ const DetailProject = (props) => {
     const currentCourse = props.location.state.course;
     const id = props.location.state.id;
     const [studentsKeys, setStudentsKeys] = useState('');
-    console.log(currentCourse.title)
+    
 
     useEffect(()=>{
         let isMounted = true

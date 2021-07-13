@@ -7,7 +7,7 @@ import NewHeader from './NewHeader';
 
 const PrivateRoute = ({ component: Component, projectObjects : projectObjects, coursesObjects: coursesObjects, ...rest }) => {
     const { currentUser } = useAuth();
-    //console.log("from private", coursesObjects)
+    
     const [profileObjects, setProfileObjects] = useState('');
     const usersRef = database.ref(`users`);
     const profileURL = usersRef.child(currentUser.uid).child(`profile`);

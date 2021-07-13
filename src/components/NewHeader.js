@@ -31,14 +31,14 @@ const NewHeader = () => {
         //navListItemsValues[0].className += " active";
         
         navListItemsValues.forEach(l => {
-            //console.log("I am",l)
+            
             const mClas = l.className;
             
             if(mClas.search('active') !== -1) {
                 const startI = mClas.search('active');
                 const slicedClass = mClas.slice(0, startI);
                 l.className = slicedClass;
-                //console.log("active found", l)
+                
             }
         })
 

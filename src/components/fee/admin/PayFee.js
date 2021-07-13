@@ -26,13 +26,13 @@ const PayFee = () => {
         user: '',
     });
     
-    //console.log(currentUser);
+    
     const options = [
         { value: 'CASH', label: 'CASH' },
         { value: 'ONLINE', label: 'ONLINE' },
       ]
     const usersOptions = []
-    //console.log("options",options)
+    
       useEffect(()=>{
         usersRef.on('value', snapshot => {
             if(snapshot.val() != null) {
@@ -45,7 +45,7 @@ const PayFee = () => {
     },[])
 
     const usersKeys = Object.keys(usersList)
-    //console.log("the users list",usersList[usersKeys[1]]);
+    
     const handleSelectChange = (event) => {
         const getValue = event.value;
         setFee(fee => ({...fee, user: getValue, course: usersList[getValue].profile.course}));
@@ -69,22 +69,25 @@ const PayFee = () => {
             });
             history.push("/all-payment");
             
+            
         } catch {
             //setError("Couldn't create User Profile")
         }
+        
         
     }
     
     const handleChange = (event) => {
         const {name, value} = event.target 
         setFee(fee => ({...fee, [name]: value}))
+        
     }
     let usersOptionsList = []
     if(usersList) {
         Object.keys(usersList).map(key => usersOptionsList.push({value: key, label: usersList[key].profile.first_name + ' ' + usersList[key].profile.last_name}))
     }
     
-
+    
     return (
         <div className = "container">
             <div className = "row">

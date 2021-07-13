@@ -6,7 +6,7 @@ const Project = (props) => {
     const id = props.id;
     const pathname = "/projects/" + projects[id].title.split(" ").join("-")
     const coursesObjects = props.coursesObjects;
-    //console.log(projects[id].duration)
+    
     return (
         <div className = "container mt-3">
             <div className = "card">

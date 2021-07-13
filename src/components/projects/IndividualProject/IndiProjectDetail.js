@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { database } from '../../../firebase/firebase';
 import { storage } from '../../../firebase/firebase';
 import Progress from '../../../helper_component/Progress';
+import { useHistory } from 'react-router';
 
 const IndiProjectDetail = (props) => {
+    const history = useHistory();
     const [file, setFile] = useState(null);
     const [disabledStatus, setDisabledStatus] = useState(false);
     const [progressValue, setProgressValue] = useState(0);
@@ -32,7 +34,7 @@ const IndiProjectDetail = (props) => {
                 }
             );
         } catch {
-            //console.log("what")
+            
         }
     }
     let value = 0
@@ -44,7 +46,7 @@ const IndiProjectDetail = (props) => {
             snapshot => {   
                 setProgressValue(Math.trunc(snapshot.bytesTransferred /snapshot.totalBytes * 100))
                  
-                //console.log("progress report",progressValue);
+                
             },
             error => {
                 console.log(error);
@@ -56,7 +58,7 @@ const IndiProjectDetail = (props) => {
                     .getDownloadURL()
                     .then(url => {
                         // the code to add projects
-                        //console.log(url);
+                        
                         value = 100;
                         setProgressValue(value)
                         addProjectToStudent(url, file.name);
@@ -75,13 +77,12 @@ const IndiProjectDetail = (props) => {
             } 
         })
         },[])
-    //console.log(currentProjectObject);
+    
     // const donwloadProject = (event) => {
     //     event.preventDefault();
     //     const urlPath = currentProjectObject[event.target.name].urlPath;
     //     const fileName = currentProjectObject[event.target.name].fileName;
-    //     console.log("button work", urlPath);
-    //     console.log("button file", fileName);
+    //    
     //     const newURL = "/o/files%2FE11357_X99-DELUXE_II_UM_WEB.pdf?alt=media&token=6192e0fc-94a9-4398-ae91-3f6173c45c3c"
     //     let xhr = new XMLHttpRequest();
     //     xhr.responseType = 'blob';
@@ -99,11 +100,14 @@ const IndiProjectDetail = (props) => {
     //     // document.body.removeChild(a)
         
     // }
+    const handleBack = (event) => {
+        history.push("/my-projects")
+    }
     return (
         <div className = "container">
             <div className = "row mt-3" style = {{fontWeight: "bold" ,fontSize: "1.8rem", color: "#dc3546"}}>
                 <div className = "col-8">
-                    {/* <button className = "btn btn-danger">Back</button> */}
+                    <button className = "btn btn-danger" onClick = {handleBack}>&laquo;Back</button>
                 </div>
                 
                 <div className = "col-3">{currentCourse.title}</div>

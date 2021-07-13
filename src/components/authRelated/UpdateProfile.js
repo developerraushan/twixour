@@ -91,7 +91,7 @@ const UpdateProfile = (props) => {
         const getValue = event.value;
         setCourseFee(getValue);
     }
-    console.log(dValue)
+    
     return (
         <>         
            {!profileObjects ? 

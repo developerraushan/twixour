@@ -56,13 +56,13 @@ const AddCourse = (props) => {
                 
             });
             history.push("/courses");
-            //console.log(topicsRef.current.value);
+            
         } catch {
             setError("Couldn't create User Profile")
         }
         setLoading(false);    
     }
-    console.log("course prints new", inidvidualCourse);
+    
     return (
         <div className = "container mt-3">
         {error && <div className = "alert alert-danger">{error}</div>}

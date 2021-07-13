@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { AuthProvider } from '../context/AuthContext';
 import {BrowserRouter as Router, Switch} from 'react-router-dom';
 import { database } from '../firebase/firebase';
-
-
+import '../assets/new/fontawesome/css/all.css';
+import '../assets/new/styles.css';
 
 import ForgotPassword from './authRelated/ForgotPassword';
 import UpdateCredentials from './authRelated/UpdateCredentials';

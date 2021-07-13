@@ -18,7 +18,7 @@ const MyProjects = (props) => {
     //const arrayProjectObjects = Object.values(projectObjects)
     const [filteredProjects, setFilteredProjects] = useState('');
   
-    //console.log(projects)
+    
 
     // useEffect(()=>{
     //     setProfileObjects(props.profileObjects)
@@ -29,7 +29,7 @@ const MyProjects = (props) => {
     // },props.profileObject)
    
 
-    //console.log(projectObjects);
+    
     
     Object.filter = (obj, predicate) => 
     Object.keys(obj)
@@ -44,7 +44,7 @@ const MyProjects = (props) => {
     }
 
     const handleTagClick = (event) => {
-        //console.log(event.target.name);
+       
         //setFilteredProjects(projects);
         const values = (Object.filter(projects, project => project.tag === event.target.name))
         setFilteredProjects(values);
@@ -56,12 +56,12 @@ const MyProjects = (props) => {
     if(filteredProjects) {
         filteredProjectsKeys = Object.keys(filteredProjects);
     }
-    //console.log(filteredProjects)
+  
     
    
     
     // let filtered = Object.filter(projectObjects, projectObject => projectObject.course === profileObjects.course)
-    //console.log();
+    
     return (
         <div className = "container">
         <div className = "row mt-5">

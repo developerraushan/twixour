@@ -21,6 +21,7 @@ const Students = (props) => {
     return (
         <div>
             <div className = "table-responsive">
+            {usersObjects &&
                 <table className = "table table-hover  table-lg table-dark">
                     <thead>
                        <tr>
@@ -35,14 +36,16 @@ const Students = (props) => {
                        </tr>
                    </thead>
                    <tbody>
-                    { usersObjects && 
+                    {  
                         usersObjectsKeys.map(id => {
                         return <Student key = {id} id = {id} usersObjects = {usersObjects} />
                         })
 
                     }
                    </tbody>
+                   
                 </table>
+                }
             </div>
             
         </div>

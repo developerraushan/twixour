@@ -1,13 +1,24 @@
 import React from 'react'
+import { useHistory } from 'react-router';
 
 const StudentDetail = (props) => {
+    const history = useHistory();
     const profile = props.location.state.profile;
     const coursesObjects = props.coursesObjects;
     const course = coursesObjects[profile.course];
   
-   
+   const handleBack = (event) => {
+       event.preventDefault();
+       history.push("/students");
+   }
     return (
         <div className = "container">
+            <div className = "row mt-3">
+                <div className = "col-3 mt-3">
+                <button className = "btn btn-danger" onClick = {handleBack}>&laquo;Back</button>
+                </div>
+                <div className = "col-9"></div>
+            </div>
             <div className = "card" style = {{width: "22rem", margin: "0 auto", float: "none",marginBottom: "10px"}}>
                 <img src = {profile.photoURL} alt = "..." />
                 <div className = "card-body">

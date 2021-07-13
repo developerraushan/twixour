@@ -28,7 +28,7 @@ const AddProject = (props) => {
         setindividualProject(inidvidualProject => ({...inidvidualProject, [name]: value}))
         
     }
-    //console.log(m_courseRef.current);
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         

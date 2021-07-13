@@ -164,7 +164,7 @@ const Header = () => {
                     
             </div>
            
-            <Link className="nav_link" onClick = {handleLogout}> 
+            <Link to = "/logout" className="nav_link" onClick = {handleLogout}> 
                         <i className='bx bx-log-out nav_icon'></i> 
                         <span className="nav_name">Log Out</span> 
             </Link>

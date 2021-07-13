@@ -22,9 +22,9 @@ const Courses = () => {
     },[])
     
     return (
-        <div className = "container mt-3">
+        <div className = "container mt-5">
             <Link to = "/add-course" style = {{ textDecoration: 'none' }}>
-            <span className = "btn btn-danger">Add Course</span>
+            <span className = "btn btn-danger mt-3">Add Course</span>
             </Link>
 
             {courses.map(id => {

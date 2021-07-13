@@ -61,7 +61,7 @@ const PaymentList = (props) => {
         filteredFees = Object.filter(feesList, fee => fee.user === currentUser.uid)
         
     }
-    //console.log(currentUser.uid)
+    
     // const handleSelectChange = (event) => {
     //     const getValue = event.value;
     //     setMonthNumeber(getValue);

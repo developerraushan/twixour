@@ -27,7 +27,7 @@ const DetalListFee = (props) => {
         }
         
     },[filteredFees])
-    console.log(profile)
+    
     return (
         <div className = "container">
             <div className = "row mt-3" style = {{fontSize: "1.5rem", fontWeight: "bold"}}>

@@ -6,7 +6,7 @@ const Student = (props) => {
     const id = props.id;
     const profile = usersObjects[id].profile
     const pathname = "/students/" + usersObjects[id].profile.first_name + "-"+ usersObjects[id].profile.last_name;
-    console.log(usersObjects[id].profile);
+    
     return (
         <>
             <tr>
