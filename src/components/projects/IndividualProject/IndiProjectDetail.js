@@ -102,7 +102,9 @@ const IndiProjectDetail = (props) => {
     return (
         <div className = "container">
             <div className = "row mt-3" style = {{fontWeight: "bold" ,fontSize: "1.8rem", color: "#dc3546"}}>
-                <div className = "col-8"></div>
+                <div className = "col-8">
+                    {/* <button className = "btn btn-danger">Back</button> */}
+                </div>
                 
                 <div className = "col-3">{currentCourse.title}</div>
                 <div className = "col-1"></div>

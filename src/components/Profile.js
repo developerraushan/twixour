@@ -35,7 +35,7 @@ const Profile = (props) => {
             {profileObjects &&
             <MakeVisible delay="1000">
             <div className="card">
-                <img src={profileObjects.photoURL} className="card-img-top" alt="..."  style = {{width: "40%"}} />
+                <img src={profileObjects.photoURL} className="mx-auto d-block card-img-top" alt="..."  style = {{width: "30%"}} />
                 <div className="card-body">
                     <h4 className="card-title" style = {{fontSize: "1.4rem"}}>About</h4>
                     <form>

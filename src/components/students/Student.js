@@ -12,7 +12,7 @@ const Student = (props) => {
             <tr>
                 <td>
                     {usersObjects && id && 
-                        <img src = {usersObjects[id].profile.photoURL} style = {{width: "20%" ,borderRadius: "50%"}} />
+                        <img src = {usersObjects[id].profile.photoURL} style = {{width: "50px", height:"50px" ,borderRadius: "50%"}} />
                     }
                 </td>
                 <td>
