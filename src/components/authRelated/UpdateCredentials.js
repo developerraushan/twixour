@@ -61,7 +61,7 @@ const UpdateCredentials = () => {
                 <input className="form-control"  type = "password" ref = {passwordConfirmRef} placeholder = "Leave blank to keep the same" />
             </div>
 
-            <button disabled = {loading} className = "btn mt-3 w-100" type = "submit" style = {{backgroundColor: "#4723d9", color: "white"}}>Update</button>
+            <button disabled = {loading} className = "btn btn-danger mt-3 w-100" type = "submit" >Update</button>
         </form>
     </div>
 </div>

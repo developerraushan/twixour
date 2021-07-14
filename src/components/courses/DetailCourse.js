@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { database } from '../../firebase/firebase';
 
 const DetailCourse = (props) => {
+    const history = useHistory();
     const usersRef = database.ref(`users`);
     const [usersObjects, setUsersObjects] = useState('');
     const course = props.location.state.course;
@@ -30,10 +31,19 @@ const DetailCourse = (props) => {
         return () => { isMounted = false };
     }, course.students)
     
-
+    const handleBack = (event) => {
+        event.preventDefault();
+        history.push("/courses")
+    }
     return (
         <div className = "container mt-3">
-            <div className = "card">
+            <div className = "row mt-5">
+                <div className = "col-3 mt-3">
+                    <button className = "btn btn-danger" onClick = {handleBack}>&laquo;Back</button>
+                </div>
+            </div>
+            <div className = "row mt-3">
+                <div className = "card">
                 <div className="title text-center">
                     Course Title: &nbsp;&nbsp;<strong>
                         {course.title}
@@ -45,16 +55,17 @@ const DetailCourse = (props) => {
                     <strong>End Date:</strong> &nbsp;&nbsp;{course.endDate} <br/>
                     <strong>Cost:</strong> &nbsp;&nbsp; &#8377; {course.cost} <br/>
                 </div>
-                <Link to = {{
+                {/* <Link to = {{
                     pathname: "/course/add-students",
                     state : {
                         id: id
                     }
                 }} style = {{ textDecoration: 'none'}}>
-                <span className = "btn" style = {{backgroundColor: "#4723d9", color: "white"}}>Add Students to this course</span>
-                </Link>
+                <span className = "btn btn-danger" >Add Students to this course</span>
+                </Link> */}
             </div>
-            { course &&
+            </div>
+            {/* { course &&
             <div className = "card mt-3">
                 <div className = "card-title text-center">
                     <strong>List of students enrolled in the course</strong>
@@ -75,7 +86,7 @@ const DetailCourse = (props) => {
                     </ul>
                 </div>
             </div>
-            }  
+            }   */}
             
         </div>
     )

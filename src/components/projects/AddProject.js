@@ -109,7 +109,7 @@ const AddProject = (props) => {
                     <input name = "description" className="form-control"  type = "text"  required onChange = {handleChange} />
                 </div>
 
-                <button disabled = {loading} className = "btn mt-3 w-100" type = "submit" style = {{backgroundColor: "#4723d9", color: "white"}}>Create Project</button>
+                <button disabled = {loading} className = "btn btn-danger mt-3 w-100" type = "submit" >Create Project</button>
             </form>
         </div>
     )

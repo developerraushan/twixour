@@ -107,7 +107,7 @@ const AddCourse = (props) => {
                     </select> */}
                 </div>
 
-                <button disabled = {loading} className = "btn mt-3 w-100" type = "submit" style = {{backgroundColor: "#4723d9", color: "white"}}>Create Course</button>
+                <button disabled = {loading} className = "btn btn-danger mt-3 w-100" type = "submit" >Create Course</button>
             </form>
         </div>
     )

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { database } from '../../firebase/firebase';
 
 const DetailProject = (props) => {
-
+    const history = useHistory();
     const usersRef = database.ref(`users`);
     const [usersObjects, setUsersObjects] = useState('');
     const project = props.location.state.project;
@@ -32,15 +32,24 @@ const DetailProject = (props) => {
         return () => { isMounted = false };
     }, project.students)
 
-
+    const handleBack = (event) => {
+        event.preventDefault();
+        history.push("/projects");
+    }
     return (
         <div className = "container mt-3">
-            <div className = "card">
-                <div className="title text-center">
+            <div className = "row mt-3">
+                <div className = "col-3 mt-3">
+                <button className = "btn btn-danger" onClick = {handleBack}>&laquo;Back</button>
+                </div>
+            </div>
+            <div className = "row mt-5">
+                <div className = "card">
+                    <div className="title text-center">
                     Project Title: &nbsp;&nbsp;<strong>
                         {project.title}
                     </strong>
-                </div>
+                    </div>
                 <div className = "card-body">
                     <strong>Course</strong>: &nbsp; &nbsp; {currentCourse.title} <br />
                     <strong>Topic</strong>: &nbsp; &nbsp; {project.tag} <br />
@@ -49,16 +58,17 @@ const DetailProject = (props) => {
                     <strong>Submission Date</strong> &nbsp;&nbsp;{project.submissionDate} <br/>
                     
                 </div>
-                <Link to = {{
+                {/* <Link to = {{
                     pathname: "/project/add-students",
                     state : {
                         id: id
                     }
                 }} style = {{ textDecoration: 'none'}}>
-                <span className = "btn" style = {{backgroundColor: "#4723d9", color: "white"}}>Add Students to this Project</span>
-                </Link>
+                <span className = "btn btn-danger" >Add Students to this Project</span>
+                </Link> */}
+                </div>
             </div>
-            { project &&
+            {/* { project &&
             <div className = "card mt-3">
                 <div className = "card-title text-center">
                     <strong>Students included in this project</strong>
@@ -79,7 +89,7 @@ const DetailProject = (props) => {
                     </ul>
                 </div>
             </div>
-            }  
+            }   */}
             
         </div>
     )

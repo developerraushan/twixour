@@ -15,7 +15,7 @@ const StudentDetail = (props) => {
         <div className = "container">
             <div className = "row mt-3">
                 <div className = "col-3 mt-3">
-                <button className = "btn" onClick = {handleBack} style = {{backgroundColor: "#4723d9", color: "white"}}>&laquo;Back</button>
+                <button className = "btn btn-danger" onClick = {handleBack}>&laquo;Back</button>
                 </div>
                 <div className = "col-9"></div>
             </div>

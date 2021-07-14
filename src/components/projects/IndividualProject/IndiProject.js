@@ -32,7 +32,7 @@ const IndiProject = (props) => {
                     id: id,
                     currentCourse: currentCourse
                 }
-            }} style = {{marginLeft: "20px", textDecoration: "none"}} ><button className = "btn" style = {{backgroundColor: "#4723d9", color: "white"}}>Start</button></Link></h1>
+            }} style = {{marginLeft: "20px", textDecoration: "none"}} ><button className = "btn btn-danger">Start</button></Link></h1>
         </div>
         </div>
     )
