@@ -12,7 +12,7 @@ const Header = () => {
         event.preventDefault();
         nav.current.classList.toggle('show')
         // change icon
-        toggle.current.classList.toggle('bx-x')
+        toggle.current.classList.toggle('fa-times')
         // add padding to body
         //bodypd.current.classList.toggle('body-pd')
         // add padding to header
@@ -44,6 +44,13 @@ const Header = () => {
         })
 
         event.currentTarget.className += " active";
+        
+        if(nav.current.className !== "l-navbar") {
+            nav.current.classList.toggle('show');
+            toggle.current.classList.toggle('fa-times');
+            headerpd.current.classList.toggle('body-pd');
+        }
+        
     }
 
     const history = useHistory();
@@ -64,7 +71,7 @@ const Header = () => {
         <>
         <header className = "header" id = "header" ref = {headerpd}>
                 <div className = "header_toggle">
-                    <i className = "bx bx-menu" ref = {toggle} id = "header-toggle" onClick = {m_header_toggle_handle}></i>
+                    <i className = "fas fa-bars" ref = {toggle} id = "header-toggle" onClick = {m_header_toggle_handle}></i>
                 </div>
                 <div className = "header_img">
                     {/* <img src="https://i.imgur.com/hczKIze.jgp" alt="" /> */}
@@ -86,7 +93,7 @@ const Header = () => {
                         </Link>
                         
                         <Link to="/my-projects" className="nav_link" onClick = {handle_nav_link} style={{ textDecoration: 'none' }}> 
-                        <i className='fas fa-briefcase nav_icon'></i> 
+                        <i className='fas fa-tasks nav_icon'></i> 
                         <span className="nav_name">My Projects</span> 
                         </Link>   
                         
@@ -107,7 +114,7 @@ const Header = () => {
                         {currentUser.email === "admindev@gmail.com" &&
 
                         <Link to="/all-payment" className="nav_link" onClick = {handle_nav_link} style={{ textDecoration: 'none' }}> 
-                        <i className='bx bx-bookmark nav_icon'></i> 
+                        <i className='fas fa-hand-holding-usd nav_icon'></i> 
                         <span className="nav_name">Payment</span> 
                         </Link>
                             
@@ -146,7 +153,7 @@ const Header = () => {
 
 
                         <Link to="/projects" className="nav_link" onClick = {handle_nav_link} style = {{ textDecoration: 'none'}} > 
-                        <i className='fas fa-book-open nav_icon'></i> 
+                        <i className='fas fa-copy nav_icon'></i> 
                         <span className="nav_name">Projects</span> 
                         </Link>
 
@@ -165,7 +172,7 @@ const Header = () => {
             </div>
            
             <Link to = "/logout" className="nav_link" onClick = {handleLogout}> 
-                        <i className='bx bx-log-out nav_icon'></i> 
+                        <i className='fas fa-sign-out-alt nav_icon'></i> 
                         <span className="nav_name">Log Out</span> 
             </Link>
         </nav>

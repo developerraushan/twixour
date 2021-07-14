@@ -58,7 +58,7 @@ const Dashboard = (props) => {
             Email: <strong> {currentUser.email}</strong>
             </div>
             <div className = "col-3">
-            Enrolled in: <strong>{currentCourse && currentCourse.title} </strong>
+            Enrolled in: <strong style = {{color: "red"}}>{currentCourse && currentCourse.title} </strong>
             </div>
             
             
